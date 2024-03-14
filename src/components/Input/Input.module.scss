@@ -3,6 +3,7 @@
     @include flex-container(column, flex-start, flex-start, 0.4rem);
 
     input {
+        @include width-and-height(100%);
         padding: 0.8rem;
         color: $marine-blue;
         font-size: 1.6rem;

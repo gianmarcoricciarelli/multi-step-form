@@ -1,0 +1,17 @@
+.container {
+    @include width-and-height(100%, 100%);
+    @include flex-container(column, space-between, flex-start);
+
+    .input-container {
+        @include flex-container(column, center, flex-start, 2rem);
+    }
+
+    button {
+        background-color: $marine-blue;
+        color: $white;
+        padding: 0.8rem 2rem;
+        border-radius: 5px;
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+}

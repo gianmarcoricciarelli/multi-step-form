@@ -1,6 +1,6 @@
 .app-container {
-    width: 100dvw;
-    height: 100dvh;
+    @include width-and-height(100dvw, 100dvh);
+    @include flex-container(column);
     background-color: $magnolia;
     font-family: 'Ubuntu', sans-serif;
     font-style: normal;
