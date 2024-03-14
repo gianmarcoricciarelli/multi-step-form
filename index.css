@@ -10,6 +10,9 @@
 * {
     margin: 0;
 }
+html {
+    font-size: 62.5%;
+}
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;

@@ -1,0 +1,22 @@
+@mixin width-and-height($width: none, $height: none) {
+    @if $width {
+        width: $width;
+    }
+
+    @if $height {
+        height: $height;
+    }
+}
+
+@mixin flex-container(
+    $direction: row,
+    $justify: center,
+    $align: center,
+    $gap: 0rem
+) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}

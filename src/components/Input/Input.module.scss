@@ -1,0 +1,28 @@
+.container {
+    @include width-and-height(100%);
+    @include flex-container(column, flex-start, flex-start, 0.4rem);
+
+    input {
+        padding: 0.8rem;
+        color: $marine-blue;
+        font-size: 1.6rem;
+        font-weight: 500;
+        border: 1px solid $light_gray;
+        border-radius: 5px;
+
+        &::placeholder {
+            color: $cool_gray;
+            font-weight: 500;
+        }
+    }
+
+    label {
+        color: $marine-blue;
+        font-size: 1.2rem;
+        font-weight: 700;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
