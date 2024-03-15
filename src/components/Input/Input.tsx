@@ -1,30 +1,33 @@
+import { FC } from 'react';
 import styles from './Input.module.scss';
+import { InputType } from '../../types/types';
 
-interface InputProps {
+export interface InputProps {
     id: string;
-    type: 'text' | 'tel' | 'email';
+    type: InputType;
     placeHolder: string;
-    required?: boolean;
     labelText?: string;
+    invalid?: boolean;
 }
 
-export function Input({
+export const Input: FC<InputProps> = ({
     id,
     type,
     placeHolder,
-    required,
     labelText,
-}: InputProps) {
+    invalid,
+}) => {
     return (
         <div className={styles['container']}>
             {labelText && <label htmlFor={id}>{labelText}</label>}
             <input
+                className={invalid ? styles['input__invalid'] : undefined}
                 id={id}
                 name={id}
                 type={type}
                 placeholder={placeHolder}
-                required={required}
+                formNoValidate
             />
         </div>
     );
-}
+};

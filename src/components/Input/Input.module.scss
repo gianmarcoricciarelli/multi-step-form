@@ -23,6 +23,10 @@
         }
     }
 
+    .input__invalid {
+        border: 1px solid $strawberry-red;
+    }
+
     label {
         color: $marine-blue;
         font-size: 1.2rem;

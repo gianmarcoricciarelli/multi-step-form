@@ -1,9 +1,9 @@
 @mixin width-and-height($width: none, $height: none) {
-    @if $width {
+    @if $width != none {
         width: $width;
     }
 
-    @if $height {
+    @if $height != none {
         height: $height;
     }
 }
