@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import styles from './Input.module.scss';
 import { InputType } from '../../types/types';
+import styles from './Input.module.scss';
 
 export interface InputProps {
     id: string;

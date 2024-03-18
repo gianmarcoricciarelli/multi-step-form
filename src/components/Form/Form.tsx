@@ -1,16 +1,16 @@
+import { FormValidator, InputType } from '../../types/types';
 import React, {
-    useMemo,
-    type FormEvent,
     FC,
+    type FormEvent,
     PropsWithChildren,
     ReactElement,
+    useMemo,
     useState,
 } from 'react';
-import styles from './Form.module.scss';
 import { InputProps } from '../Input/Input';
-import { InputType } from '../../types/types';
+import styles from './Form.module.scss';
 
-const validators: Record<InputType, { isValid: (input: string) => boolean }> = {
+const validators: Record<InputType, FormValidator> = {
     text: {
         isValid(input) {
             return !!input?.length;

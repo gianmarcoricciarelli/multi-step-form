@@ -1,6 +1,6 @@
-import styles from './App.module.scss';
 import { Form } from './components/Form/Form';
 import { Input } from './components/Input/Input';
+import styles from './App.module.scss';
 
 function App() {
     return (
