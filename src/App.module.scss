@@ -1,3 +1,5 @@
+@include export-variables();
+
 .app-container {
     @include width-and-height(100dvw, 100dvh);
     @include flex-container(column);
