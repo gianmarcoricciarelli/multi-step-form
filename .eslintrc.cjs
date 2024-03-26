@@ -14,6 +14,6 @@ module.exports = {
             'warn',
             { allowConstantExport: true },
         ],
-        'sort-imports': 'error',
+        'sort-imports': 'off',
     },
 };

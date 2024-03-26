@@ -1,0 +1,9 @@
+.container {
+    @include width-and-height(93.8rem, 60rem);
+
+    background-color: $white;
+
+    .subscription-step__container {
+        flex-grow: 1;
+    }
+}
