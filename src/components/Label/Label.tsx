@@ -1,5 +1,5 @@
-import { FC, PropsWithChildren } from 'react';
 import styles from './Label.module.scss';
+import { FC, PropsWithChildren } from 'react';
 
 interface LabelProps {
     color: string;

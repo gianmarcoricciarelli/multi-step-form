@@ -1,5 +1,5 @@
-import { FC, PropsWithChildren } from 'react';
 import styles from './SubscriptionForm.module.scss';
+import { FC, PropsWithChildren } from 'react';
 
 export const SubscriptionForm: FC<PropsWithChildren> = ({ children }) => {
     return (
