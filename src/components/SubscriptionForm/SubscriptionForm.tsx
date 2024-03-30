@@ -5,7 +5,9 @@ export const SubscriptionForm: FC<PropsWithChildren> = ({ children }) => {
     return (
         <div className={styles.container}>
             <div>subscription steps</div>
-            <div className="subscription-step__container">{children}</div>
+            <div className={styles['subscription-step__container']}>
+                {children}
+            </div>
         </div>
     );
 };

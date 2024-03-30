@@ -1,27 +1,51 @@
 import { InputType } from '../../types/types';
+import { Label } from '../Label/Label';
 import styles from './Input.module.scss';
 import { FC } from 'react';
 
 export interface InputProps {
     id: string;
     type: InputType;
+    isRequired?: boolean;
     placeHolder: string;
     labelText?: string;
-    invalid?: boolean;
+    isInvalid?: boolean;
 }
 
 export const Input: FC<InputProps> = ({
     id,
     type,
+    isRequired,
     placeHolder,
     labelText,
-    invalid,
+    isInvalid,
 }) => {
     return (
         <div className={styles['container']}>
-            {labelText && <label htmlFor={id}>{labelText}</label>}
+            <div className={styles['labels-container']}>
+                {labelText && (
+                    <Label
+                        size="small"
+                        color="marine-blue"
+                        fontStyle="semi-bold"
+                        htmlFor={id}
+                    >
+                        {labelText}
+                    </Label>
+                )}
+                {isRequired && isInvalid && (
+                    <Label
+                        size="small"
+                        color="strawberry-red"
+                        fontStyle="bold"
+                        htmlFor={id}
+                    >
+                        This field is required
+                    </Label>
+                )}
+            </div>
             <input
-                className={invalid ? styles['input__invalid'] : undefined}
+                className={isInvalid ? styles['input__invalid'] : undefined}
                 id={id}
                 name={id}
                 type={type}

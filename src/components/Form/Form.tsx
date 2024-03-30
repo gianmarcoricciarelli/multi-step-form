@@ -1,4 +1,6 @@
 import { FormValidator, InputType } from '../../types/types';
+import { InputProps } from '../Input/Input';
+import styles from './Form.module.scss';
 import React, {
     FC,
     type FormEvent,
@@ -7,8 +9,6 @@ import React, {
     useMemo,
     useState,
 } from 'react';
-import { InputProps } from '../Input/Input';
-import styles from './Form.module.scss';
 
 const validators: Record<InputType, FormValidator> = {
     text: {
@@ -73,7 +73,7 @@ export const Form: FC<PropsWithChildren> = ({ children }) => {
                     (child) =>
                         React.cloneElement(child, {
                             ...child.props,
-                            invalid: invalidInputs.includes(child.props.id),
+                            isInvalid: invalidInputs.includes(child.props.id),
                         }),
                 )}
             </div>

@@ -1,9 +1,24 @@
-// @include export-variables();
-
-.label-size__regular {
+.label {
     font-size: 1.6rem;
+    font-weight: 400;
+}
+
+.label-size__small {
+    font-size: 1.2rem;
 }
 
 .label-size__big {
     font-size: 2rem;
+}
+
+.label-style__semi-bold {
+    font-weight: 500;
+}
+
+.label-style__bold {
+    font-weight: 700;
+}
+
+.label-style__italic {
+    font-style: italic;
 }

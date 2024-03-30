@@ -2,6 +2,11 @@
     @include width-and-height(100%);
     @include flex-container(column, flex-start, flex-start, 0.4rem);
 
+    .labels-container {
+        width: 100%;
+        @include flex-container(row, space-between);
+    }
+
     input {
         @include width-and-height(100%);
         padding: 0.8rem;
@@ -28,10 +33,6 @@
     }
 
     label {
-        color: $marine-blue;
-        font-size: 1.2rem;
-        font-weight: 700;
-
         &:hover {
             cursor: pointer;
         }

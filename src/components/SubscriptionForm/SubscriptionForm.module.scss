@@ -1,9 +1,16 @@
 .container {
     @include width-and-height(93.8rem, 60rem);
+    @include flex-container(row, flex-start, flex-start);
 
+    padding: 1.6rem;
     background-color: $white;
+    border-radius: 1rem;
 
     .subscription-step__container {
+        @include width-and-height(100%, 100%);
+        @include flex-container(column, flex-start, center, 2.4rem);
+
+        padding: 1.6rem 20rem;
         flex-grow: 1;
     }
 }

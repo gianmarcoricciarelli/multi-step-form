@@ -1,9 +1,10 @@
 .container {
     @include width-and-height(100%, 100%);
-    @include flex-container(column, space-between, flex-start);
+    @include flex-container(column, space-between, center);
 
     .input-container {
-        @include flex-container(column, center, flex-start, 2rem);
+        width: 100%;
+        @include flex-container(column, center, flex-end, 2rem);
     }
 
     button {
