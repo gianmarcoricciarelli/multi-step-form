@@ -1,0 +1,20 @@
+.container {
+    @include width-and-height(27.4rem, 100%);
+    @include flex-container(column, center, flex-start, 2rem);
+
+    background: url(../../../assets/images/bg-sidebar-desktop.svg);
+    background-position: bottom;
+    border-radius: 1rem;
+
+    .step-number {
+        @include width-and-height(2.4rem, 2.4rem);
+        @include flex-container();
+
+        border-radius: 50%;
+        background-color: $light-blue;
+    }
+
+    .step-info {
+        @include flex-container(column, flex-start, flex-start);
+    }
+}

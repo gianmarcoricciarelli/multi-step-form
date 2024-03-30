@@ -1,6 +1,6 @@
 .container {
     @include width-and-height(100%, 100%);
-    @include flex-container(column, space-between, center);
+    @include flex-container(column, space-between, flex-end);
 
     .input-container {
         width: 100%;

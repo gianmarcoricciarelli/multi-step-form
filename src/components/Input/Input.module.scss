@@ -25,6 +25,7 @@
         &:focus {
             outline: unset;
             box-shadow: 0px 0px 0px 1px $purplish-blue;
+            border: 1px solid transparent;
         }
     }
 
