@@ -1,20 +1,32 @@
 .container {
     @include width-and-height(27.4rem, 100%);
-    @include flex-container(column, center, flex-start, 2rem);
+    @include flex-container(column, flex-start, flex-start, 2rem);
+
+    padding: 3.2rem 2.8rem;
 
     background: url(../../../assets/images/bg-sidebar-desktop.svg);
     background-position: bottom;
     border-radius: 1rem;
 
-    .step-number {
-        @include width-and-height(2.4rem, 2.4rem);
-        @include flex-container();
+    .step {
+        @include flex-container(row, flex-start, center, 1.2rem);
 
-        border-radius: 50%;
-        background-color: $light-blue;
-    }
+        .step-number {
+            @include width-and-height(3.6rem, 3.6rem);
+            @include flex-container();
 
-    .step-info {
-        @include flex-container(column, flex-start, flex-start);
+            border-radius: 50%;
+            border: 1px solid $white;
+            background-color: transparent;
+        }
+
+        .step-number__selected {
+            background-color: $light-blue;
+            border: unset;
+        }
+
+        .step-info {
+            @include flex-container(column, flex-start, flex-start);
+        }
     }
 }
