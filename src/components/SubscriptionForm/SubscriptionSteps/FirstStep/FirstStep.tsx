@@ -2,17 +2,18 @@ import { Form } from '../../../Form/Form';
 import { Input } from '../../../Input/Input';
 import { Label } from '../../../Label/Label';
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const FirstStep: FC = () => {
+    const { t } = useTranslation();
+
     return (
         <>
             <div>
                 <Label size="big" color="marine-blue" fontStyle="bold">
-                    Personal info
+                    {t('FIRST_STEP.TITLE')}
                 </Label>
-                <Label color="cool_gray">
-                    Please provide your name, email address and phone number
-                </Label>
+                <Label color="cool_gray">{t('FIRST_STEP.SUBTITLE')}</Label>
             </div>
             <Form>
                 <Input
