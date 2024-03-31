@@ -2,6 +2,7 @@ import { InputType } from '../../types/types';
 import { Label } from '../Label/Label';
 import styles from './Input.module.scss';
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export interface InputProps {
     id: string;
@@ -20,6 +21,8 @@ export const Input: FC<InputProps> = ({
     labelText,
     isInvalid,
 }) => {
+    const { t } = useTranslation('input');
+
     return (
         <div className={styles['container']}>
             <div className={styles['labels-container']}>
@@ -40,7 +43,7 @@ export const Input: FC<InputProps> = ({
                         fontStyle="bold"
                         htmlFor={id}
                     >
-                        This field is required
+                        {t('REQUIRED_ERROR_MESSAGE')}
                     </Label>
                 )}
             </div>
