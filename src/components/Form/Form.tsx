@@ -1,5 +1,9 @@
-import { FormValidator, InputType } from '../../types/types';
+import { FormValidator, InputType, SubscriptionStep } from '../../types/types';
 import { InputProps } from '../Input/Input';
+import {
+    SubscriptionContext,
+    SubscriptionContextProps,
+} from '../SubscriptionForm/SubscriptionForm.context';
 import styles from './Form.module.scss';
 import React, {
     FC,
@@ -8,7 +12,10 @@ import React, {
     ReactElement,
     useMemo,
     useState,
+    useContext,
+    Context,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const validators: Record<InputType, FormValidator> = {
     text: {
@@ -29,6 +36,12 @@ const validators: Record<InputType, FormValidator> = {
 };
 
 export const Form: FC<PropsWithChildren> = ({ children }) => {
+    const { t } = useTranslation();
+
+    const { step, setStep }: SubscriptionContextProps = useContext(
+        SubscriptionContext as Context<SubscriptionContextProps>,
+    );
+
     const [invalidInputs, setInvalidInputs] = useState<string[]>([]);
 
     const inputIdsToTypeMap: Record<string, string> = useMemo(() => {
@@ -59,6 +72,8 @@ export const Form: FC<PropsWithChildren> = ({ children }) => {
             setInvalidInputs(_invalidInputs);
             return;
         }
+
+        setStep((step + 1) as SubscriptionStep);
     };
 
     return (
@@ -77,7 +92,7 @@ export const Form: FC<PropsWithChildren> = ({ children }) => {
                         }),
                 )}
             </div>
-            <button type="submit">Next Step</button>
+            <button type="submit">{t('NEXT_STEP')}</button>
         </form>
     );
 };

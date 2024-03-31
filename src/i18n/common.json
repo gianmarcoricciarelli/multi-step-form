@@ -7,6 +7,7 @@
     "FOURTH_STEP": {
         "NAME": "SUMMARY"
     },
+    "NEXT_STEP": "Next Step",
     "SECOND_STEP": {
         "NAME": "SELECT PLAN"
     },
