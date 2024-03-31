@@ -1,3 +1,9 @@
 {
+    "EMAIL_PLACEHOLDER": "e.g. stephenking@lorem.com",
+    "EMAIL_TEXT": "Email Address",
+    "NAME_PLACEHOLDER": "e.g. Stephen King",
+    "NAME_TEXT": "Name",
+    "PHONE_PLACEHOLDER": "e.g. +1 234 567 890",
+    "PHONE_TEXT": "Phone Number",
     "REQUIRED_ERROR_MESSAGE": "This field is required"
 }

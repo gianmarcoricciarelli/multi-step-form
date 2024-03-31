@@ -1,22 +1,36 @@
+import { SubscriptionStep } from '../../../types/types';
 import { Label } from '../../Label/Label';
+import {
+    SubscriptionContext,
+    SubscriptionContextProps,
+} from '../SubscriptionForm.context';
 import styles from './SubscriptionSteps.module.scss';
-import { FC } from 'react';
+import { Context, FC, useContext } from 'react';
 
 export const SubscriptionSteps: FC = () => {
     const steps: string[] = ['YOUR INFO', 'SELECT PLAN', 'ADD-ONS', 'SUMMARY'];
-    const selectedStep = 0;
+
+    const { step, setStep }: SubscriptionContextProps = useContext(
+        SubscriptionContext as Context<SubscriptionContextProps>,
+    );
+
+    const onClickHandler = (newStep: SubscriptionStep) => {
+        setStep(newStep);
+    };
 
     return (
         <div className={styles['container']}>
             {steps.map((stepName, index) => (
-                <div className={styles.step}>
+                <div
+                    key={stepName}
+                    className={styles.step}
+                    onClick={() => onClickHandler(index as SubscriptionStep)}
+                >
                     <div
-                        className={`${styles['step-number']}${selectedStep === index ? ` ${styles['step-number__selected']}` : ''}`}
+                        className={`${styles['step-number']}${step === index ? ` ${styles['step-number__selected']}` : ''}`}
                     >
                         <Label
-                            color={
-                                selectedStep === index ? 'marine-blue' : 'white'
-                            }
+                            color={step === index ? 'marine-blue' : 'white'}
                         >{`${index + 1}`}</Label>
                     </div>
                     <div className={styles['step-info']}>

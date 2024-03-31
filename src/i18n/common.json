@@ -1,9 +1,16 @@
 {
     "FIRST_STEP": {
-        "TITLE": "Personal info",
-        "SUBTITLE": "Please provide your name, email address, and phone number"
+        "NAME": "YOUR INFO",
+        "SUBTITLE": "Please provide your name, email address, and phone number",
+        "TITLE": "Personal info"
     },
-    "FOURTH_STEP": {},
-    "SECOND_STEP": {},
-    "THIRD_STEP": {}
+    "FOURTH_STEP": {
+        "NAME": "SUMMARY"
+    },
+    "SECOND_STEP": {
+        "NAME": "SELECT PLAN"
+    },
+    "THIRD_STEP": {
+        "NAME": "SUMMARY"
+    }
 }

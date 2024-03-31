@@ -9,14 +9,13 @@ import {
     useState,
 } from 'react';
 
-interface SubscriptionContextProps {
+export interface SubscriptionContextProps {
     step: SubscriptionStep;
     setStep: Dispatch<SetStateAction<SubscriptionStep>>;
 }
 
-const SubscriptionContext = createContext<SubscriptionContextProps | null>(
-    null,
-);
+export const SubscriptionContext =
+    createContext<SubscriptionContextProps | null>(null);
 
 export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
     children,
