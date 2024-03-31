@@ -1,3 +1,9 @@
 {
-    "hello": "hello"
+    "FIRST_STEP": {
+        "TITLE": "Personal info",
+        "SUBTITLE": "Please provide your name, email address, and phone number"
+    },
+    "FOURTH_STEP": {},
+    "SECOND_STEP": {},
+    "THIRD_STEP": {}
 }
