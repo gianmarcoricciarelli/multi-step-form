@@ -1,0 +1,13 @@
+.container {
+    @include flex-container(column, flex-start, center, 1.6rem);
+
+    width: 100%;
+    background-color: blue;
+
+    .card-container {
+        @include flex-container(row, flex-start, flex-start, 1.2rem);
+
+        background-color: yellow;
+        width: 100%;
+    }
+}
