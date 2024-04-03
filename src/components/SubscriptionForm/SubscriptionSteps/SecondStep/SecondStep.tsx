@@ -1,4 +1,4 @@
-import { Plan, PlanName } from '../../../../types/types';
+import { Plan } from '../../../../types/types';
 import { StepHeader } from '../StepHeader/StepHeader';
 import { Card } from './Card/Card';
 import styles from './SecondStep.module.scss';
@@ -6,19 +6,13 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const plans: Plan[] = [
-    { name: 'ARCADE', amountLabel: '', freeMonthsLabel: '' },
-    { name: 'ADVANCED', amountLabel: '', freeMonthsLabel: '' },
-    { name: 'PRO', amountLabel: '', freeMonthsLabel: '' },
+    { name: 'ARCADE', amountLabel: '$9/mo', freeMonthsLabel: '' },
+    { name: 'ADVANCED', amountLabel: '$12/mo', freeMonthsLabel: '' },
+    { name: 'PRO', amountLabel: '$15/mo', freeMonthsLabel: '' },
 ];
 
 export const SecondStep: FC = () => {
     const { t } = useTranslation('secondStep');
-
-    const plansNamesLabelMap: Record<PlanName, string> = {
-        ARCADE: t('PLANS.ARCADE'),
-        ADVANCED: t('PLANS.ADVANCED'),
-        PRO: t('PLANS.PRO'),
-    };
 
     return (
         <>
@@ -27,7 +21,7 @@ export const SecondStep: FC = () => {
                 <div className={styles['card-container']}>
                     {plans.map((plan) => (
                         <Card
-                            planName={plansNamesLabelMap[plan.name]}
+                            planName={plan.name}
                             amountLabel={plan.amountLabel}
                             freeMonthsLabel={plan.freeMonthsLabel}
                         />
