@@ -1,6 +1,6 @@
 import { Form } from '../../../Form/Form';
 import { Input } from '../../../Input/Input';
-import { Label } from '../../../Label/Label';
+import { StepHeader } from '../StepHeader/StepHeader';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -9,12 +9,10 @@ export const FirstStep: FC = () => {
 
     return (
         <>
-            <div>
-                <Label size="big" color="marine-blue" fontStyle="bold">
-                    {t('FIRST_STEP.TITLE')}
-                </Label>
-                <Label color="cool_gray">{t('FIRST_STEP.SUBTITLE')}</Label>
-            </div>
+            <StepHeader
+                title={t('FIRST_STEP.TITLE')}
+                subtitle={t('FIRST_STEP.SUBTITLE')}
+            />
             <Form>
                 <Input
                     id="name"

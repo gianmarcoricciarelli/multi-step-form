@@ -1,0 +1,13 @@
+{
+    "PLANS": {
+        "ADVANCED": "Advanced",
+        "ARCADE": "Arcade",
+        "PRO": "Pro"
+    },
+    "SUBSCRIPTION": {
+        "MONTHLY": "Monthly",
+        "YEARLY": "Yearly"
+    },
+    "SUBTITLE": "You have the option of monthly or yearly billing",
+    "TITLE": "Select your plan"
+}
