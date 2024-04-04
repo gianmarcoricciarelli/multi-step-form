@@ -1,5 +1,5 @@
-import { InputType } from '../../types/types';
-import { Label } from '../Label/Label';
+import { InputType } from '../../../../../types/types';
+import { Label } from '../../../../Label/Label';
 import styles from './Input.module.scss';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';

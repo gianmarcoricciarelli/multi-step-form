@@ -1,9 +1,13 @@
-import { FormValidator, InputType, SubscriptionStep } from '../../types/types';
-import { InputProps } from '../Input/Input';
+import {
+    FormValidator,
+    InputType,
+    SubscriptionStep,
+} from '../../../../../types/types';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../SubscriptionForm/SubscriptionForm.context';
+} from '../../../../SubscriptionForm/SubscriptionForm.context';
+import { InputProps } from '../Input/Input';
 import styles from './Form.module.scss';
 import React, {
     FC,
