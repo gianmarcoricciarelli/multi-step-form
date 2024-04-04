@@ -1,6 +1,6 @@
-import { Form } from '../../../Form/Form';
-import { Input } from '../../../Input/Input';
 import { StepHeader } from '../StepHeader/StepHeader';
+import { Form } from './Form/Form';
+import { Input } from './Input/Input';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
