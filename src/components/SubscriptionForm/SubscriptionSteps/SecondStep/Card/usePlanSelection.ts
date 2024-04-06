@@ -15,7 +15,10 @@ interface PlanIconAndLabel {
 }
 type PlanNameToIconMap = Record<PlanName, PlanIconAndLabel>;
 
-export function usePlanSelection() {
+export function usePlanSelection(): {
+    planNameToIconMap: PlanNameToIconMap;
+    onCardClickHandler: Dispatch<SetStateAction<PlanName>>;
+} {
     const { t } = useTranslation('subscriptionSteps');
 
     const { setPlan } = useContext(
