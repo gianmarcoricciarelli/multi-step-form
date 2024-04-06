@@ -11,7 +11,9 @@ export const BillingToggle: FC = () => {
             <Label color="marine-blue" fontStyle="semi-bold">
                 {t('MONTHLY_SUB')}
             </Label>
-            <p>Toggle</p>
+            <div className={styles.toggle}>
+                <p>Toggle</p>
+            </div>
             <Label color="marine-blue" fontStyle="semi-bold">
                 {t('YEARLY_SUB')}
             </Label>

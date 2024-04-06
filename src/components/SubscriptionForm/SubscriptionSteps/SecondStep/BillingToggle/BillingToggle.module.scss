@@ -5,4 +5,13 @@
     border-radius: 0.5rem;
     background-color: $alabaster;
     padding: 1.2rem 0;
+
+    .toggle {
+        @include width-and-height(6rem, 2rem);
+        @include flex-container();
+
+        background-color: $marine-blue;
+        border-radius: 1.6rem;
+        color: white;
+    }
 }
