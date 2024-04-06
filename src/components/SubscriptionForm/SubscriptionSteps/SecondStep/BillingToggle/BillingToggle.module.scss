@@ -1,0 +1,8 @@
+.billing-toggle {
+    @include flex-container(row, center, center, 2.4rem);
+
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: $alabaster;
+    padding: 1.2rem 0;
+}

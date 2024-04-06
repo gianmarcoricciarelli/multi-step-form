@@ -1,4 +1,5 @@
 import { Plan } from '../../../../types/types';
+import { BillingToggle } from './BillingToggle/BillingToggle';
 import { Card } from './Card/Card';
 import styles from './SecondStep.module.scss';
 import { FC } from 'react';
@@ -23,7 +24,7 @@ export const SecondStep: FC = () => {
                         />
                     ))}
                 </div>
-                <p>subscrition</p>
+                <BillingToggle />
             </div>
         </>
     );

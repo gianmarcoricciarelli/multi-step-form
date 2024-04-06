@@ -1,3 +1,4 @@
+import billingToggle from './billing_toggle.json';
 import common from './common.json';
 import input from './input.json';
 import subscriptionSteps from './subscription_steps.json';
@@ -11,6 +12,7 @@ i18n.use(initReactI18next).init({
             common,
             input,
             subscriptionSteps,
+            billingToggle,
         },
     },
     defaultNS: 'common',
