@@ -16,6 +16,7 @@ export const SecondStep: FC = () => {
                 <div className={styles['card-container']}>
                     {plans.map((plan) => (
                         <Card
+                            key={plan.name}
                             planName={plan.name}
                             amountLabel={plan.amountLabel}
                             freeMonthsLabel={plan.freeMonthsLabel}

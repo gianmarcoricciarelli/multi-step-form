@@ -19,16 +19,16 @@ export const Card: FC<CardProps> = ({
     amountLabel,
     freeMonthsLabel,
 }) => {
-    const { plan, setPlan }: SubscriptionContextProps = useContext(
+    const { plan }: SubscriptionContextProps = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
 
-    const { planNameToIconMap } = usePlanSelection();
+    const { planNameToIconMap, onCardClickHandler } = usePlanSelection();
 
     return (
         <div
             className={`${styles.card}${plan === planName ? ` ${styles['card__selected']}` : ''}`}
-            onClick={() => setPlan(planName)}
+            onClick={() => onCardClickHandler(planName)}
         >
             <img src={planNameToIconMap[planName].icon} />
             <div>

@@ -2,7 +2,11 @@ import advancedIcon from '../../../../../assets/images/icon-advanced.svg';
 import arcadeIcon from '../../../../../assets/images/icon-arcade.svg';
 import proIcon from '../../../../../assets/images/icon-pro.svg';
 import { PlanName } from '../../../../../types/types';
-import { useMemo } from 'react';
+import {
+    SubscriptionContext,
+    SubscriptionContextProps,
+} from '../../../SubscriptionForm.context';
+import { Context, Dispatch, SetStateAction, useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface PlanIconAndLabel {
@@ -13,6 +17,10 @@ type PlanNameToIconMap = Record<PlanName, PlanIconAndLabel>;
 
 export function usePlanSelection() {
     const { t } = useTranslation('subscriptionSteps');
+
+    const { setPlan } = useContext(
+        SubscriptionContext as Context<SubscriptionContextProps>,
+    );
 
     const planNameToIconMap: PlanNameToIconMap = useMemo<PlanNameToIconMap>(
         () => ({
@@ -32,13 +40,15 @@ export function usePlanSelection() {
         [t],
     );
 
-    const toReturn: {
+    const toReturn = useMemo<{
         planNameToIconMap: PlanNameToIconMap;
-    } = useMemo<{ planNameToIconMap: PlanNameToIconMap }>(
+        onCardClickHandler: Dispatch<SetStateAction<PlanName>>;
+    }>(
         () => ({
             planNameToIconMap,
+            onCardClickHandler: setPlan,
         }),
-        [planNameToIconMap],
+        [planNameToIconMap, setPlan],
     );
 
     return toReturn;
