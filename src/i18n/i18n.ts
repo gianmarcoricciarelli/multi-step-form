@@ -1,6 +1,6 @@
 import common from './common.json';
 import input from './input.json';
-import secondStep from './second_step.json';
+import subscriptionSteps from './subscription_steps.json';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
@@ -10,7 +10,7 @@ i18n.use(initReactI18next).init({
         en: {
             common,
             input,
-            secondStep,
+            subscriptionSteps,
         },
     },
     defaultNS: 'common',
