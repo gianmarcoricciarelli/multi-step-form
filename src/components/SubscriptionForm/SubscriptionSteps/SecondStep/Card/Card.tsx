@@ -1,6 +1,3 @@
-import advancedIcon from '../../../../../assets/images/icon-advanced.svg';
-import arcadeIcon from '../../../../../assets/images/icon-arcade.svg';
-import proIcon from '../../../../../assets/images/icon-pro.svg';
 import { PlanName } from '../../../../../types/types';
 import { Label } from '../../../../Label/Label';
 import {
@@ -8,8 +5,8 @@ import {
     SubscriptionContextProps,
 } from '../../../SubscriptionForm.context';
 import styles from './Card.module.scss';
+import { usePlanSelection } from './usePlanSelection';
 import { Context, FC, useContext } from 'react';
-import { useTranslation } from 'react-i18next';
 
 interface CardProps {
     planName: PlanName;
@@ -26,23 +23,7 @@ export const Card: FC<CardProps> = ({
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
 
-    const { t } = useTranslation('subscriptionSteps');
-
-    const planNameToIconMap: Record<PlanName, { icon: string; label: string }> =
-        {
-            ARCADE: {
-                icon: arcadeIcon,
-                label: t('SECOND_STEP.PLANS.ARCADE'),
-            },
-            ADVANCED: {
-                icon: advancedIcon,
-                label: t('SECOND_STEP.PLANS.ADVANCED'),
-            },
-            PRO: {
-                icon: proIcon,
-                label: t('SECOND_STEP.PLANS.PRO'),
-            },
-        };
+    const { planNameToIconMap } = usePlanSelection();
 
     return (
         <div
