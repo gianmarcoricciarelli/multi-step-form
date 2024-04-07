@@ -36,7 +36,7 @@ export const BillingToggle: FC = () => {
         <div className={styles['billing-toggle']}>
             <Label
                 className={styles['billing-mode-label']}
-                color={billingMode === 'MONTHLY' ? 'marine-blue' : 'light_gray'}
+                color={billingMode === 'MONTHLY' ? 'marine-blue' : 'cool_gray'}
                 fontStyle="semi-bold"
             >
                 {t('MONTHLY_SUB')}
@@ -46,7 +46,7 @@ export const BillingToggle: FC = () => {
             </div>
             <Label
                 className={styles['billing-mode-label']}
-                color={billingMode === 'YEARLY' ? 'marine-blue' : 'light_gray'}
+                color={billingMode === 'YEARLY' ? 'marine-blue' : 'cool_gray'}
                 fontStyle="semi-bold"
             >
                 {t('YEARLY_SUB')}
