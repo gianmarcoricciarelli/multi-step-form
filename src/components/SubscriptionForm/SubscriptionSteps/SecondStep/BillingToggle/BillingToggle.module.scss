@@ -7,11 +7,21 @@
     padding: 1.2rem 0;
 
     .toggle {
-        @include width-and-height(6rem, 2rem);
+        @include width-and-height(4.8rem, 2rem);
         @include flex-container();
 
         background-color: $marine-blue;
         border-radius: 1.6rem;
         color: white;
+        position: relative;
+
+        .circle {
+            @include width-and-height(1.2rem, 1.2rem);
+
+            border-radius: 50%;
+            background-color: $alabaster;
+            position: absolute;
+            left: 8%;
+        }
     }
 }
