@@ -1,11 +1,14 @@
+import { BillingMode } from '../../../../../types/types';
 import { Label } from '../../../../Label/Label';
 import styles from './BillingToggle.module.scss';
 import gsap from 'gsap';
-import { FC, useRef } from 'react';
+import { FC, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const BillingToggle: FC = () => {
     const { t } = useTranslation('billingToggle');
+
+    const [billingMode, setBillingMode] = useState<BillingMode>('MONTHLY');
 
     const circleToggleRef = useRef<HTMLDivElement>(null);
 
@@ -17,11 +20,13 @@ export const BillingToggle: FC = () => {
                 gsap.to(circleToggleRef.current, {
                     left: '64%',
                     duration: 0.3,
+                    onComplete: () => setBillingMode('YEARLY'),
                 });
             } else {
                 gsap.to(circleToggleRef.current, {
                     left: '8%',
                     duration: 0.3,
+                    onComplete: () => setBillingMode('MONTHLY'),
                 });
             }
         }
@@ -29,13 +34,21 @@ export const BillingToggle: FC = () => {
 
     return (
         <div className={styles['billing-toggle']}>
-            <Label color="marine-blue" fontStyle="semi-bold">
+            <Label
+                className={styles['billing-mode-label']}
+                color={billingMode === 'MONTHLY' ? 'marine-blue' : 'light_gray'}
+                fontStyle="semi-bold"
+            >
                 {t('MONTHLY_SUB')}
             </Label>
             <div className={styles.toggle} onClick={onToggleClickHandler}>
                 <div className={styles.circle} ref={circleToggleRef} />
             </div>
-            <Label color="marine-blue" fontStyle="semi-bold">
+            <Label
+                className={styles['billing-mode-label']}
+                color={billingMode === 'YEARLY' ? 'marine-blue' : 'light_gray'}
+                fontStyle="semi-bold"
+            >
                 {t('YEARLY_SUB')}
             </Label>
         </div>
