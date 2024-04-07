@@ -48,7 +48,11 @@ export const BillingToggle: FC = () => {
                 {t('MONTHLY_SUB')}
             </Label>
             <div className={styles.toggle} onClick={onToggleClickHandler}>
-                <div className={styles.circle} ref={circleToggleRef} />
+                <div
+                    style={{ left: billingMode === 'MONTHLY' ? '8%' : '64%' }}
+                    className={styles.circle}
+                    ref={circleToggleRef}
+                />
             </div>
             <Label
                 className={styles['billing-mode-label']}

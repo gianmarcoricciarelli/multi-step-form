@@ -8,6 +8,7 @@ export interface FormValidator {
 }
 export interface Plan {
     name: PlanName;
-    amountLabel: string;
-    freeMonthsLabel?: string;
+    monthlyAmountLabel: string;
+    yearlyAmountLabel: string;
+    freeMonths?: number;
 }

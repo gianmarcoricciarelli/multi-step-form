@@ -10,16 +10,18 @@ import { Context, FC, useContext } from 'react';
 
 interface CardProps {
     planName: PlanName;
-    amountLabel: string;
+    monthlyAmountLabel: string;
+    yearlyAmountLabel: string;
     freeMonthsLabel?: string;
 }
 
 export const Card: FC<CardProps> = ({
     planName,
-    amountLabel,
+    monthlyAmountLabel,
+    yearlyAmountLabel,
     freeMonthsLabel,
 }) => {
-    const { plan }: SubscriptionContextProps = useContext(
+    const { plan, billingMode }: SubscriptionContextProps = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
 
@@ -36,9 +38,11 @@ export const Card: FC<CardProps> = ({
                     {planNameToIconMap[planName].label}
                 </Label>
                 <Label color="cool_gray" fontStyle="semi-bold">
-                    {amountLabel}
+                    {billingMode === 'MONTHLY'
+                        ? monthlyAmountLabel
+                        : yearlyAmountLabel}
                 </Label>
-                {freeMonthsLabel && (
+                {billingMode === 'YEARLY' && (
                     <Label
                         color="marine-blue"
                         size="small"

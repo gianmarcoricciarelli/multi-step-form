@@ -7,6 +7,7 @@
     "GO_BACK": "Go Back",
     "NEXT_STEP": "Next Step",
     "SECOND_STEP": {
+        "MONTHS_FREE_LABEL": "{{freeMonths}} months free",
         "PLANS": {
             "ADVANCED": "Advanced",
             "ARCADE": "Arcade",
