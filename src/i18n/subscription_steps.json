@@ -4,6 +4,8 @@
         "SUBTITLE": "Please provide your name, email address, and phone number",
         "TITLE": "Personal info"
     },
+    "GO_BACK": "Go Back",
+    "NEXT_STEP": "Next Step",
     "SECOND_STEP": {
         "PLANS": {
             "ADVANCED": "Advanced",

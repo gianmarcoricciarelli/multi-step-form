@@ -7,9 +7,36 @@
     border-radius: 1rem;
 
     .subscription-step__container {
-        @include flex-container(column, flex-start, flex-start, 3.2rem);
+        @include flex-container(column, space-between, flex-start, 3.2rem);
 
         height: 100%;
         padding: 1.6rem 0;
+
+        .buttons-container {
+            @include flex-container(row, flex-end);
+
+            width: 100%;
+
+            button {
+                padding: 0.8rem 2rem;
+                border-radius: 5px;
+                font-size: 1.6rem;
+                font-weight: 500;
+            }
+
+            .next-step-button {
+                background-color: $marine-blue;
+                color: $white;
+            }
+
+            .go-back-button {
+                background-color: $white;
+                color: $cool-gray;
+            }
+        }
+
+        .buttons-container-with-go-back {
+            @include flex-container(row, space-between);
+        }
     }
 }

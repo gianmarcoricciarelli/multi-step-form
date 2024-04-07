@@ -37,12 +37,26 @@ export const SubscriptionForm: FC = () => {
         <div className={styles.container}>
             <SubscriptionSteps />
             <div className={styles['subscription-step__container']}>
-                <StepHeader
-                    title={headerLabelsToStepMap[step].title}
-                    subtitle={headerLabelsToStepMap[step].subtitle}
-                />
-                {step === 0 && <FirstStep />}
-                {step === 1 && <SecondStep />}
+                <>
+                    <StepHeader
+                        title={headerLabelsToStepMap[step].title}
+                        subtitle={headerLabelsToStepMap[step].subtitle}
+                    />
+                    {step === 0 && <FirstStep />}
+                    {step === 1 && <SecondStep />}
+                </>
+                <div
+                    className={`${styles['buttons-container']}${step !== 0 ? ` ${styles['buttons-container-with-go-back']}` : ''}`}
+                >
+                    {step !== 0 && (
+                        <button className={styles['go-back-button']}>
+                            {t('GO_BACK')}
+                        </button>
+                    )}
+                    <button className={styles['next-step-button']}>
+                        {t('NEXT_STEP')}
+                    </button>
+                </div>
             </div>
         </div>
     );

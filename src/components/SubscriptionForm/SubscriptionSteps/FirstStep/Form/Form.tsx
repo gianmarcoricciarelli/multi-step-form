@@ -19,7 +19,6 @@ import React, {
     useContext,
     Context,
 } from 'react';
-import { useTranslation } from 'react-i18next';
 
 const validators: Record<InputType, FormValidator> = {
     text: {
@@ -40,8 +39,6 @@ const validators: Record<InputType, FormValidator> = {
 };
 
 export const Form: FC<PropsWithChildren> = ({ children }) => {
-    const { t } = useTranslation();
-
     const { step, setStep }: SubscriptionContextProps = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
@@ -96,7 +93,6 @@ export const Form: FC<PropsWithChildren> = ({ children }) => {
                         }),
                 )}
             </div>
-            <button type="submit">{t('NEXT_STEP')}</button>
         </form>
     );
 };
