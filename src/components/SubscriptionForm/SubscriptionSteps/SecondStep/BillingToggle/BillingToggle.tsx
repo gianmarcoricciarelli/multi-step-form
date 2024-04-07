@@ -1,14 +1,20 @@
-import { BillingMode } from '../../../../../types/types';
 import { Label } from '../../../../Label/Label';
+import {
+    SubscriptionContext,
+    SubscriptionContextProps,
+} from '../../../SubscriptionForm.context';
 import styles from './BillingToggle.module.scss';
 import gsap from 'gsap';
-import { FC, useRef, useState } from 'react';
+import { Context, FC, useContext, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const BillingToggle: FC = () => {
     const { t } = useTranslation('billingToggle');
 
-    const [billingMode, setBillingMode] = useState<BillingMode>('MONTHLY');
+    const { billingMode, setBillingMode } =
+        useContext<SubscriptionContextProps>(
+            SubscriptionContext as Context<SubscriptionContextProps>,
+        );
 
     const circleToggleRef = useRef<HTMLDivElement>(null);
 

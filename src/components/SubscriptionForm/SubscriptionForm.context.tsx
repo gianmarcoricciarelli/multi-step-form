@@ -1,4 +1,4 @@
-import { PlanName, SubscriptionStep } from '../../types/types';
+import { BillingMode, PlanName, SubscriptionStep } from '../../types/types';
 import {
     Dispatch,
     FC,
@@ -14,6 +14,8 @@ export interface SubscriptionContextProps {
     setStep: Dispatch<SetStateAction<SubscriptionStep>>;
     plan: PlanName;
     setPlan: Dispatch<SetStateAction<PlanName>>;
+    billingMode: BillingMode;
+    setBillingMode: Dispatch<SetStateAction<BillingMode>>;
 }
 
 export const SubscriptionContext =
@@ -24,6 +26,7 @@ export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
 }) => {
     const [step, setStep] = useState<SubscriptionStep>(0 as SubscriptionStep);
     const [plan, setPlan] = useState<PlanName>('ARCADE');
+    const [billingMode, setBillingMode] = useState<BillingMode>('MONTHLY');
 
     const contextInternalState: SubscriptionContextProps = useMemo(
         () => ({
@@ -31,8 +34,10 @@ export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
             setStep,
             plan,
             setPlan,
+            billingMode,
+            setBillingMode,
         }),
-        [plan, step],
+        [billingMode, plan, step],
     );
 
     return (

@@ -1,3 +1,4 @@
+import { SubscriptionStep } from '../../types/types';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
@@ -16,7 +17,7 @@ interface HeaderLabels {
 }
 
 export const SubscriptionForm: FC = () => {
-    const { step }: SubscriptionContextProps = useContext(
+    const { step, setStep }: SubscriptionContextProps = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
 
@@ -49,11 +50,27 @@ export const SubscriptionForm: FC = () => {
                     className={`${styles['buttons-container']}${step !== 0 ? ` ${styles['buttons-container-with-go-back']}` : ''}`}
                 >
                     {step !== 0 && (
-                        <button className={styles['go-back-button']}>
+                        <button
+                            className={styles['go-back-button']}
+                            onClick={() =>
+                                setStep(
+                                    (prevStep) =>
+                                        (prevStep - 1) as SubscriptionStep,
+                                )
+                            }
+                        >
                             {t('GO_BACK')}
                         </button>
                     )}
-                    <button className={styles['next-step-button']}>
+                    <button
+                        className={styles['next-step-button']}
+                        onClick={() =>
+                            setStep(
+                                (prevStep) =>
+                                    (prevStep + 1) as SubscriptionStep,
+                            )
+                        }
+                    >
                         {t('NEXT_STEP')}
                     </button>
                 </div>
