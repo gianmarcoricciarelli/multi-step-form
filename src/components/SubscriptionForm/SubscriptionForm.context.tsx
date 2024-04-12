@@ -1,4 +1,4 @@
-import { BillingModes, PlansNames, SubscriptionStep } from '../../enums/enums';
+import { BillingModes, PlansNames, SubscriptionStep } from '../../types/enums';
 import {
     Dispatch,
     FC,

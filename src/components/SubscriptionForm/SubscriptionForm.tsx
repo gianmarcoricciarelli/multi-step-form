@@ -1,4 +1,4 @@
-import { SubscriptionStep } from '../../enums/enums';
+import { SubscriptionStep } from '../../types/enums';
 import {
     SubscriptionContext,
     SubscriptionContextProps,

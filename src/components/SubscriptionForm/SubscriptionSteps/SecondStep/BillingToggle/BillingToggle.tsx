@@ -1,4 +1,4 @@
-import { BillingModes } from '../../../../../enums/enums';
+import { BillingModes } from '../../../../../types/enums';
 import { Label } from '../../../../Label/Label';
 import {
     SubscriptionContext,
