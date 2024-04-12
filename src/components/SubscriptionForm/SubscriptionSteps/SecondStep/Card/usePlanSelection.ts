@@ -1,7 +1,7 @@
 import advancedIcon from '../../../../../assets/images/icon-advanced.svg';
 import arcadeIcon from '../../../../../assets/images/icon-arcade.svg';
 import proIcon from '../../../../../assets/images/icon-pro.svg';
-import { PlansNames } from '../../../../../enums/enums';
+import { PlansNames } from '../../../../../types/enums';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
