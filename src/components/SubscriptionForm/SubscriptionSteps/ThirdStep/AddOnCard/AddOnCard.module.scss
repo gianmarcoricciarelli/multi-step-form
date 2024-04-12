@@ -2,17 +2,27 @@
     @include flex-container(row, space-between);
 
     width: 100%;
-    padding: 2rem;
+    padding: 1.2rem 2rem;
     border: 1px solid $light_gray;
     border-radius: 0.5rem;
     transition: all 300ms ease-in-out;
 
     .checkbox-container {
         @include flex-container(row, center, center, 2.4rem);
+
+        input[type='checkbox'] {
+            @include width-and-height(1.6rem, 1.6rem);
+
+            &:hover {
+                cursor: pointer;
+                border: 10px solid red;
+            }
+        }
     }
 
     &:hover {
         border: 1px solid $purplish-blue;
         cursor: pointer;
+        background-color: $alabaster;
     }
 }

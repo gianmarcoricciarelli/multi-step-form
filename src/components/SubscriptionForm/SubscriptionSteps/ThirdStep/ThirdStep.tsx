@@ -1,4 +1,5 @@
 import { AddOnCard } from './AddOnCard/AddOnCard';
+import styles from './ThirdStep.module.scss';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -43,10 +44,10 @@ export const ThirdStep: FC = () => {
         },
     ];
     return (
-        <>
+        <div className={styles['third-step-container']}>
             {addOns.map((addOn) => (
                 <AddOnCard key={addOn.title} {...addOn} />
             ))}
-        </>
+        </div>
     );
 };

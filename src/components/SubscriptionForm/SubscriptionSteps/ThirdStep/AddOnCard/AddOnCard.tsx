@@ -1,6 +1,11 @@
+import { BillingModes } from '../../../../../types/enums';
 import { Label } from '../../../../Label/Label';
+import {
+    SubscriptionContext,
+    SubscriptionContextProps,
+} from '../../../SubscriptionForm.context';
 import styles from './AddOnCard.module.scss';
-import { FC } from 'react';
+import { Context, FC, useContext } from 'react';
 
 interface AddOnCardProps {
     title: string;
@@ -15,10 +20,14 @@ export const AddOnCard: FC<AddOnCardProps> = ({
     monthlyAmount,
     yearlyAmount,
 }) => {
+    const { billingMode } = useContext(
+        SubscriptionContext as Context<SubscriptionContextProps>,
+    );
+
     return (
-        <div className={styles['add-on-card']}>
+        <label className={styles['add-on-card']} htmlFor={title}>
             <div className={styles['checkbox-container']}>
-                <input type="checkbox" />
+                <input type="checkbox" id={title} name={title} />
                 <div className="">
                     <Label color="marine-blue" fontStyle="semi-bold">
                         {title}
@@ -26,7 +35,11 @@ export const AddOnCard: FC<AddOnCardProps> = ({
                     <Label color="cool_gray">{subtitle}</Label>
                 </div>
             </div>
-            <Label color="purplish-blue">{monthlyAmount}</Label>
-        </div>
+            <Label color="purplish-blue">
+                {billingMode === BillingModes.Monthly
+                    ? monthlyAmount
+                    : yearlyAmount}
+            </Label>
+        </label>
     );
 };

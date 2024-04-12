@@ -1,0 +1,5 @@
+.third-step-container {
+    @include flex-container(column, flex-start, flex-start, 1.2rem);
+
+    width: 100%;
+}

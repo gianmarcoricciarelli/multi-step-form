@@ -7,9 +7,9 @@
     border-radius: 1rem;
 
     .subscription-step__container {
+        @include width-and-height(44rem, 100%);
         @include flex-container(column, space-between, flex-start, 3.2rem);
 
-        height: 100%;
         padding: 1.6rem 0;
 
         .buttons-container {
