@@ -1,3 +1,8 @@
+export enum InputType {
+    Text = 'text',
+    Telephone = 'tel',
+    Email = 'email',
+}
 export enum SubscriptionStep {
     UserDataForm = 0,
     SubscriptionSelection = 1,

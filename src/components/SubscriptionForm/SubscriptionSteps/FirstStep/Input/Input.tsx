@@ -1,4 +1,4 @@
-import { InputType } from '../../../../../types/types';
+import { InputType } from '../../../../../types/enums';
 import { Label } from '../../../../Label/Label';
 import styles from './Input.module.scss';
 import { FC } from 'react';
