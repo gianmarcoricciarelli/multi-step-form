@@ -1,3 +1,4 @@
+import { BillingModes } from '../../../../../enums/enums';
 import { Label } from '../../../../Label/Label';
 import {
     SubscriptionContext,
@@ -26,13 +27,13 @@ export const BillingToggle: FC = () => {
                 gsap.to(circleToggleRef.current, {
                     left: '64%',
                     duration: 0.3,
-                    onComplete: () => setBillingMode('YEARLY'),
+                    onComplete: () => setBillingMode(BillingModes.Yearly),
                 });
             } else {
                 gsap.to(circleToggleRef.current, {
                     left: '8%',
                     duration: 0.3,
-                    onComplete: () => setBillingMode('MONTHLY'),
+                    onComplete: () => setBillingMode(BillingModes.Monthly),
                 });
             }
         }
@@ -42,21 +43,32 @@ export const BillingToggle: FC = () => {
         <div className={styles['billing-toggle']}>
             <Label
                 className={styles['billing-mode-label']}
-                color={billingMode === 'MONTHLY' ? 'marine-blue' : 'cool_gray'}
+                color={
+                    billingMode === BillingModes.Monthly
+                        ? 'marine-blue'
+                        : 'cool_gray'
+                }
                 fontStyle="semi-bold"
             >
                 {t('MONTHLY_SUB')}
             </Label>
             <div className={styles.toggle} onClick={onToggleClickHandler}>
                 <div
-                    style={{ left: billingMode === 'MONTHLY' ? '8%' : '64%' }}
+                    style={{
+                        left:
+                            billingMode === BillingModes.Monthly ? '8%' : '64%',
+                    }}
                     className={styles.circle}
                     ref={circleToggleRef}
                 />
             </div>
             <Label
                 className={styles['billing-mode-label']}
-                color={billingMode === 'YEARLY' ? 'marine-blue' : 'cool_gray'}
+                color={
+                    billingMode === BillingModes.Yearly
+                        ? 'marine-blue'
+                        : 'cool_gray'
+                }
                 fontStyle="semi-bold"
             >
                 {t('YEARLY_SUB')}

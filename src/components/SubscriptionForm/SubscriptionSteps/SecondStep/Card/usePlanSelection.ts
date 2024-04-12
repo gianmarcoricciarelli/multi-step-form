@@ -1,7 +1,7 @@
 import advancedIcon from '../../../../../assets/images/icon-advanced.svg';
 import arcadeIcon from '../../../../../assets/images/icon-arcade.svg';
 import proIcon from '../../../../../assets/images/icon-pro.svg';
-import { PlanName } from '../../../../../types/types';
+import { PlansNames } from '../../../../../enums/enums';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
@@ -13,11 +13,11 @@ interface PlanIconAndLabel {
     icon: string;
     label: string;
 }
-type PlanNameToIconMap = Record<PlanName, PlanIconAndLabel>;
+type PlanNameToIconMap = Record<PlansNames, PlanIconAndLabel>;
 
 export function usePlanSelection(): {
     planNameToIconMap: PlanNameToIconMap;
-    onCardClickHandler: Dispatch<SetStateAction<PlanName>>;
+    onCardClickHandler: Dispatch<SetStateAction<PlansNames>>;
 } {
     const { t } = useTranslation('subscriptionSteps');
 
@@ -45,7 +45,7 @@ export function usePlanSelection(): {
 
     const toReturn = useMemo<{
         planNameToIconMap: PlanNameToIconMap;
-        onCardClickHandler: Dispatch<SetStateAction<PlanName>>;
+        onCardClickHandler: Dispatch<SetStateAction<PlansNames>>;
     }>(
         () => ({
             planNameToIconMap,

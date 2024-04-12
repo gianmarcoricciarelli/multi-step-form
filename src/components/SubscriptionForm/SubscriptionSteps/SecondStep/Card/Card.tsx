@@ -1,4 +1,4 @@
-import { PlanName } from '../../../../../types/types';
+import { BillingModes, PlansNames } from '../../../../../enums/enums';
 import { Label } from '../../../../Label/Label';
 import {
     SubscriptionContext,
@@ -9,7 +9,7 @@ import { usePlanSelection } from './usePlanSelection';
 import { Context, FC, useContext } from 'react';
 
 interface CardProps {
-    planName: PlanName;
+    planName: PlansNames;
     monthlyAmountLabel: string;
     yearlyAmountLabel: string;
     freeMonthsLabel?: string;
@@ -38,11 +38,11 @@ export const Card: FC<CardProps> = ({
                     {planNameToIconMap[planName].label}
                 </Label>
                 <Label color="cool_gray" fontStyle="semi-bold">
-                    {billingMode === 'MONTHLY'
+                    {billingMode === BillingModes.Monthly
                         ? monthlyAmountLabel
                         : yearlyAmountLabel}
                 </Label>
-                {billingMode === 'YEARLY' && (
+                {billingMode === BillingModes.Yearly && (
                     <Label
                         color="marine-blue"
                         size="small"

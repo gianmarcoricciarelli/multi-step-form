@@ -1,8 +1,5 @@
-import {
-    FormValidator,
-    InputType,
-    SubscriptionStep,
-} from '../../../../../types/types';
+import { SubscriptionStep } from '../../../../../enums/enums';
+import { FormValidator, InputType } from '../../../../../types/types';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
