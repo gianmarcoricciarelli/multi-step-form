@@ -8,6 +8,7 @@ import { FirstStep } from './SubscriptionSteps/FirstStep/FirstStep';
 import { SecondStep } from './SubscriptionSteps/SecondStep/SecondStep';
 import { StepHeader } from './SubscriptionSteps/StepHeader/StepHeader';
 import { SubscriptionSteps } from './SubscriptionSteps/SubscriptionSteps';
+import { ThirdStep } from './SubscriptionSteps/ThirdStep/ThirdStep';
 import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -24,13 +25,17 @@ export const SubscriptionForm: FC = () => {
     const { t } = useTranslation('subscriptionSteps');
 
     const headerLabelsToStepMap: Record<number, HeaderLabels> = {
-        0: {
+        [SubscriptionStep.UserDataForm]: {
             title: t('FIRST_STEP.TITLE'),
             subtitle: t('FIRST_STEP.SUBTITLE'),
         },
-        1: {
+        [SubscriptionStep.SubscriptionSelection]: {
             title: t('SECOND_STEP.TITLE'),
             subtitle: t('SECOND_STEP.SUBTITLE'),
+        },
+        [SubscriptionStep.AddOnsSelection]: {
+            title: t('THIRD_STEP.TITLE'),
+            subtitle: t('THIRD_STEP.SUBTITLE'),
         },
     };
 
@@ -43,8 +48,11 @@ export const SubscriptionForm: FC = () => {
                         title={headerLabelsToStepMap[step].title}
                         subtitle={headerLabelsToStepMap[step].subtitle}
                     />
-                    {step === 0 && <FirstStep />}
-                    {step === 1 && <SecondStep />}
+                    {step === SubscriptionStep.UserDataForm && <FirstStep />}
+                    {step === SubscriptionStep.SubscriptionSelection && (
+                        <SecondStep />
+                    )}
+                    {step === SubscriptionStep.AddOnsSelection && <ThirdStep />}
                 </>
                 <div
                     className={`${styles['buttons-container']}${step !== 0 ? ` ${styles['buttons-container-with-go-back']}` : ''}`}

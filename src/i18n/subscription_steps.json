@@ -19,5 +19,27 @@
         },
         "SUBTITLE": "You have the option of monthly or yearly billing",
         "TITLE": "Select your plan"
+    },
+    "THIRD_STEP": {
+        "ADD_ONS": {
+            "CUSTOMIZABLE_PROFILE": {
+                "SUBTITLE": "Custom them on your profile",
+                "TITLE": "Customizable Profile"
+            },
+            "LARGER_STORAGE": {
+                "MONTHLY_AMOUNT": "+2$/mo",
+                "SUBTITLE": "Extra 1TB of cloud save",
+                "TITLE": "Larger storage",
+                "YEARLY_AMOUNT": "+20$/mo"
+            },
+            "ONLINE_SERVICE": {
+                "MONTHLY_AMOUNT": "+1$/mo",
+                "SUBTITLE": "Access to multiplayer games",
+                "TITLE": "Online service",
+                "YEARLY_AMOUNT": "+10$/mo"
+            }
+        },
+        "SUBTITLE": "Add-ons help enhance you gaming experience.",
+        "TITLE": "Pick add-ons"
     }
 }

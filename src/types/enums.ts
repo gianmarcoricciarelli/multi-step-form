@@ -6,6 +6,7 @@ export enum InputType {
 export enum SubscriptionStep {
     UserDataForm = 0,
     SubscriptionSelection = 1,
+    AddOnsSelection = 2,
 }
 export enum PlansNames {
     Arcade = 'ARCADE',
