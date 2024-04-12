@@ -23,8 +23,10 @@
     "THIRD_STEP": {
         "ADD_ONS": {
             "CUSTOMIZABLE_PROFILE": {
+                "MONTHLY_AMOUNT": "+3$/mo",
                 "SUBTITLE": "Custom them on your profile",
-                "TITLE": "Customizable Profile"
+                "TITLE": "Customizable Profile",
+                "YEARLY_AMOUNT": "+30$/mo"
             },
             "LARGER_STORAGE": {
                 "MONTHLY_AMOUNT": "+2$/mo",

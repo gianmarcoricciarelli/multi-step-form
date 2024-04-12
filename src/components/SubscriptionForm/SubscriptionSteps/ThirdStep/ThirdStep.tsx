@@ -1,5 +1,8 @@
-import { t } from 'i18next';
+import { AddOnCard } from './AddOnCard/AddOnCard';
 import { FC } from 'react';
+import { useTranslation } from 'react-i18next';
+
+console.log('hello');
 
 interface AddOn {
     title: string;
@@ -7,63 +10,42 @@ interface AddOn {
     monthlyAmount: string;
     yearlyAmount: string;
 }
-const addOns: AddOn[] = [
-    {
-        title: t('THIRD_STEP.ADD_ONS.ONLINE_STORAGE.TITLE', {
-            ns: 'subscriptionSteps',
-        }),
-        subtitle: t('THIRD_STEP.ADD_ONS.ONLINE_STORAGE.SUBTITLE', {
-            ns: 'subscriptionSteps',
-        }),
-        monthlyAmount: t('THIRD_STEP.ADD_ONS.ONLINE_STORAGE.MONTHLY_AMOUNT', {
-            ns: 'subscriptionSteps',
-        }),
-        yearlyAmount: t('THIRD_STEP.ADD_ONS.ONLINE_STORAGE.YEARLY_AMOUNT', {
-            ns: 'subscriptionSteps',
-        }),
-    },
-    {
-        title: t('THIRD_STEP.ADD_ONS.LARGER_STORAGE.TITLE', {
-            ns: 'subscriptionSteps',
-        }),
-        subtitle: t('THIRD_STEP.ADD_ONS.LARGER_STORAGE.SUBTITLE', {
-            ns: 'subscriptionSteps',
-        }),
-        monthlyAmount: t('THIRD_STEP.ADD_ONS.LARGER_STORAGE.MONTHLY_AMOUNT', {
-            ns: 'subscriptionSteps',
-        }),
-        yearlyAmount: t('THIRD_STEP.ADD_ONS.LARGER_STORAGE.YEARLY_AMOUNT', {
-            ns: 'subscriptionSteps',
-        }),
-    },
-    {
-        title: t('THIRD_STEP.ADD_ONS.CUSTOMIZABLE_PROFILE.TITLE', {
-            ns: 'subscriptionSteps',
-        }),
-        subtitle: t('THIRD_STEP.ADD_ONS.CUSTOMIZABLE_PROFILE.SUBTITLE', {
-            ns: 'subscriptionSteps',
-        }),
-        monthlyAmount: t(
-            'THIRD_STEP.ADD_ONS.CUSTOMIZABLE_PROFILE.MONTHLY_AMOUNT',
-            {
-                ns: 'subscriptionSteps',
-            },
-        ),
-        yearlyAmount: t(
-            'THIRD_STEP.ADD_ONS.CUSTOMIZABLE_PROFILE.YEARLY_AMOUNT',
-            {
-                ns: 'subscriptionSteps',
-            },
-        ),
-    },
-];
 
 export const ThirdStep: FC = () => {
-    console.log(addOns);
+    const { t } = useTranslation('subscriptionSteps');
+
+    const addOns: AddOn[] = [
+        {
+            title: t('THIRD_STEP.ADD_ONS.ONLINE_SERVICE.TITLE'),
+            subtitle: t('THIRD_STEP.ADD_ONS.ONLINE_SERVICE.SUBTITLE'),
+            monthlyAmount: t(
+                'THIRD_STEP.ADD_ONS.ONLINE_SERVICE.MONTHLY_AMOUNT',
+            ),
+            yearlyAmount: t('THIRD_STEP.ADD_ONS.ONLINE_SERVICE.YEARLY_AMOUNT'),
+        },
+        {
+            title: t('THIRD_STEP.ADD_ONS.LARGER_STORAGE.TITLE'),
+            subtitle: t('THIRD_STEP.ADD_ONS.LARGER_STORAGE.SUBTITLE'),
+            monthlyAmount: t(
+                'THIRD_STEP.ADD_ONS.LARGER_STORAGE.MONTHLY_AMOUNT',
+            ),
+            yearlyAmount: t('THIRD_STEP.ADD_ONS.LARGER_STORAGE.YEARLY_AMOUNT'),
+        },
+        {
+            title: t('THIRD_STEP.ADD_ONS.CUSTOMIZABLE_PROFILE.TITLE'),
+            subtitle: t('THIRD_STEP.ADD_ONS.CUSTOMIZABLE_PROFILE.SUBTITLE'),
+            monthlyAmount: t(
+                'THIRD_STEP.ADD_ONS.CUSTOMIZABLE_PROFILE.MONTHLY_AMOUNT',
+            ),
+            yearlyAmount: t(
+                'THIRD_STEP.ADD_ONS.CUSTOMIZABLE_PROFILE.YEARLY_AMOUNT',
+            ),
+        },
+    ];
     return (
         <>
             {addOns.map((addOn) => (
-                <p>{addOn.title}</p>
+                <AddOnCard key={addOn.title} {...addOn} />
             ))}
         </>
     );
