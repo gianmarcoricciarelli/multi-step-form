@@ -1,12 +1,11 @@
+import { AddOns } from '../../../../types/enums';
 import { AddOnCard } from './AddOnCard/AddOnCard';
 import styles from './ThirdStep.module.scss';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
-console.log('hello');
-
 interface AddOn {
-    title: string;
+    title: AddOns;
     subtitle: string;
     monthlyAmount: string;
     yearlyAmount: string;
