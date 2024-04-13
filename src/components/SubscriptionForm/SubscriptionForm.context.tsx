@@ -1,4 +1,9 @@
-import { BillingModes, PlansNames, SubscriptionStep } from '../../types/enums';
+import {
+    AddOns,
+    BillingModes,
+    PlansNames,
+    SubscriptionStep,
+} from '../../types/enums';
 import {
     Dispatch,
     FC,
@@ -16,6 +21,8 @@ export interface SubscriptionContextProps {
     setPlan: Dispatch<SetStateAction<PlansNames>>;
     billingMode: BillingModes;
     setBillingMode: Dispatch<SetStateAction<BillingModes>>;
+    addOns: AddOns[];
+    setAddOns: Dispatch<SetStateAction<AddOns[]>>;
 }
 
 export const SubscriptionContext =
@@ -29,6 +36,7 @@ export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
     const [billingMode, setBillingMode] = useState<BillingModes>(
         BillingModes.Monthly,
     );
+    const [addOns, setAddOns] = useState<AddOns[]>([]);
 
     const contextInternalState: SubscriptionContextProps = useMemo(
         () => ({
@@ -38,8 +46,10 @@ export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
             setPlan,
             billingMode,
             setBillingMode,
+            addOns,
+            setAddOns,
         }),
-        [billingMode, plan, step],
+        [addOns, billingMode, plan, step],
     );
 
     return (

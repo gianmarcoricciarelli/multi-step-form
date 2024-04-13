@@ -17,3 +17,8 @@ export enum BillingModes {
     Monthly = 'MONTHLY',
     Yearly = 'YEARLY',
 }
+export enum AddOns {
+    OnlineService = 'Online service',
+    LargerStorage = 'Larger storage',
+    CustomizableProfile = 'Customizable Profile',
+}

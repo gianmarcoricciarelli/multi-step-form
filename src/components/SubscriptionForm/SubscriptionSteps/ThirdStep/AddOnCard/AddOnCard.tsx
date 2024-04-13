@@ -1,4 +1,4 @@
-import { BillingModes } from '../../../../../types/enums';
+import { AddOns, BillingModes } from '../../../../../types/enums';
 import { Label } from '../../../../Label/Label';
 import {
     SubscriptionContext,
@@ -8,7 +8,7 @@ import styles from './AddOnCard.module.scss';
 import { Context, FC, useContext } from 'react';
 
 interface AddOnCardProps {
-    title: string;
+    title: AddOns;
     subtitle: string;
     monthlyAmount: string;
     yearlyAmount: string;
@@ -20,14 +20,33 @@ export const AddOnCard: FC<AddOnCardProps> = ({
     monthlyAmount,
     yearlyAmount,
 }) => {
-    const { billingMode } = useContext(
+    const { billingMode, addOns, setAddOns } = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
 
+    const onChangeHandler = () => {
+        if (addOns.includes(title)) {
+            setAddOns(addOns.filter((addOn) => addOn !== title));
+        } else {
+            setAddOns((prevAddOns) => [...prevAddOns, title]);
+        }
+    };
+
+    const addOnCardCssClasses = [styles['add-on-card']];
+    if (addOns.includes(title)) {
+        addOnCardCssClasses.push(styles['add-on-card__selected']);
+    }
+
     return (
-        <label className={styles['add-on-card']} htmlFor={title}>
+        <label className={addOnCardCssClasses.join(' ')} htmlFor={title}>
             <div className={styles['checkbox-container']}>
-                <input type="checkbox" id={title} name={title} />
+                <input
+                    type="checkbox"
+                    id={title}
+                    name={title}
+                    checked={addOns.includes(title)}
+                    onChange={onChangeHandler}
+                />
                 <div className="">
                     <Label color="marine-blue" fontStyle="semi-bold">
                         {title}

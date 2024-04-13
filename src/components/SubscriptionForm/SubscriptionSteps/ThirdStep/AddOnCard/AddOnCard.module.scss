@@ -7,6 +7,11 @@
     border-radius: 0.5rem;
     transition: all 300ms ease-in-out;
 
+    &__selected {
+        border: 1px solid $purplish-blue;
+        background-color: $alabaster;
+    }
+
     .checkbox-container {
         @include flex-container(row, center, center, 2.4rem);
 
