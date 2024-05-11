@@ -4,14 +4,28 @@
     width: 100%;
 
     .recap {
+        @include flex-container(column, flex-start, flex-start, 1.6rem);
+
         width: 100%;
+        padding: 2rem;
         background-color: $magnolia;
         border-radius: 0.5rem;
+
+        .plan__container {
+            @include flex-container(row, space-between);
+
+            width: 100%;
+        }
+
+        .separator {
+            @include width-and-height(100%, 0.1rem);
+            background-color: $light-gray;
+        }
 
         .addons__container {
             @include flex-container(column, flex-start, flex-start, 1.6rem);
 
-            padding: 2rem;
+            width: 100%;
 
             .addon {
                 @include flex-container(row, space-between);

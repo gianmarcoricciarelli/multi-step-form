@@ -18,6 +18,7 @@ interface LabelProps {
     color: LabelColors;
     size?: LabelSizes;
     fontStyle?: LabelFontStyles;
+    href?: string;
     htmlFor?: string;
     className?:
         | HTMLAttributes<HTMLParagraphElement>['className']
@@ -29,6 +30,7 @@ export const Label: FC<PropsWithChildren<LabelProps>> = ({
     color,
     size = 'regular',
     fontStyle = 'regular',
+    href,
     htmlFor,
     className,
 }) => {
@@ -45,6 +47,18 @@ export const Label: FC<PropsWithChildren<LabelProps>> = ({
         cssClasses.push(styles['label-style__semi-bold']);
     if (fontStyle === 'bold') cssClasses.push(styles['label-style__bold']);
     if (fontStyle === 'italic') cssClasses.push(styles['label-style__italic']);
+
+    if (href) {
+        return (
+            <a
+                style={{ color: `var(--${color})` }}
+                className={cssClasses.join(' ')}
+                href={href}
+            >
+                {children}
+            </a>
+        );
+    }
 
     if (htmlFor) {
         return (

@@ -34,6 +34,20 @@ export const FourthStep: FC = () => {
     return (
         <div className={styles['summary__container']}>
             <div className={styles.recap}>
+                <div className={styles['plan__container']}>
+                    <div>
+                        <Label color="marine-blue" fontStyle="semi-bold">
+                            {`${t(`SECOND_STEP.PLANS.${plan}`)} (${billingMode === BillingModes.Monthly ? 'Monthly' : 'Yearly'})`}
+                        </Label>
+                        <Label color="cool_gray" href="#">
+                            Change
+                        </Label>
+                    </div>
+                    <Label color="marine-blue" fontStyle="semi-bold">
+                        1000
+                    </Label>
+                </div>
+                <div className={styles.separator} />
                 <div className={styles['addons__container']}>
                     {addOns.map((addOn) => (
                         <div className={styles.addon}>
