@@ -9,7 +9,7 @@ interface StepHeaderProps {
 export const StepHeader: FC<StepHeaderProps> = ({ title, subtitle }) => {
     return (
         <div>
-            <Label size="big" color="marine-blue" fontStyle="bold">
+            <Label size="huge" color="marine-blue" fontStyle="bold">
                 {title}
             </Label>
             <Label color="cool_gray">{subtitle}</Label>

@@ -5,6 +5,7 @@ import {
 } from './SubscriptionForm.context';
 import styles from './SubscriptionForm.module.scss';
 import { FirstStep } from './SubscriptionSteps/FirstStep/FirstStep';
+import { FourthStep } from './SubscriptionSteps/FourthStep/FourthStep';
 import { SecondStep } from './SubscriptionSteps/SecondStep/SecondStep';
 import { StepHeader } from './SubscriptionSteps/StepHeader/StepHeader';
 import { SubscriptionSteps } from './SubscriptionSteps/SubscriptionSteps';
@@ -37,6 +38,10 @@ export const SubscriptionForm: FC = () => {
             title: t('THIRD_STEP.TITLE'),
             subtitle: t('THIRD_STEP.SUBTITLE'),
         },
+        [SubscriptionStep.Summary]: {
+            title: t('FOURTH_STEP.TITLE'),
+            subtitle: t('FOURTH_STEP.SUBTITLE'),
+        },
     };
 
     return (
@@ -53,6 +58,7 @@ export const SubscriptionForm: FC = () => {
                         <SecondStep />
                     )}
                     {step === SubscriptionStep.AddOnsSelection && <ThirdStep />}
+                    {step === SubscriptionStep.Summary && <FourthStep />}
                 </>
                 <div
                     className={`${styles['buttons-container']}${step !== 0 ? ` ${styles['buttons-container-with-go-back']}` : ''}`}

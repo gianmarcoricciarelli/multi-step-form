@@ -7,6 +7,7 @@ export enum SubscriptionStep {
     UserDataForm = 0,
     SubscriptionSelection = 1,
     AddOnsSelection = 2,
+    Summary = 3,
 }
 export enum PlansNames {
     Arcade = 'ARCADE',

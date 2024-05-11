@@ -4,6 +4,10 @@
         "SUBTITLE": "Please provide your name, email address, and phone number",
         "TITLE": "Personal info"
     },
+    "FOURTH_STEP": {
+        "TITLE": "Finishing up",
+        "SUBTITLE": "Double-check everything looks OK before confirming"
+    },
     "GO_BACK": "Go Back",
     "NEXT_STEP": "Next Step",
     "SECOND_STEP": {
