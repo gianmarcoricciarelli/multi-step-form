@@ -5,8 +5,10 @@
         "TITLE": "Personal info"
     },
     "FOURTH_STEP": {
+        "SUBTITLE": "Double-check everything looks OK before confirming",
         "TITLE": "Finishing up",
-        "SUBTITLE": "Double-check everything looks OK before confirming"
+        "TOTAL_MONTHLY": "Total (per month)",
+        "TOTAL_YEARLY": "Total (per year)"
     },
     "GO_BACK": "Go Back",
     "NEXT_STEP": "Next Step",

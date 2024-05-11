@@ -1,18 +1,19 @@
 .summary__container {
-    @include flex-container(column, flex-start, flex-start, 2.4rem);
+    @include flex-container(column, flex-start, flex-start, 2rem);
 
     width: 100%;
-    background-color: $magnolia;
-    border-radius: 0.5rem;
 
     .recap {
         width: 100%;
+        background-color: $magnolia;
+        border-radius: 0.5rem;
     }
 
     .total {
-        @include flex-container();
+        @include flex-container(row, space-between);
 
         width: 100%;
+        padding: 0rem 1.6rem;
         background-color: $white;
     }
 }
