@@ -15,9 +15,40 @@ export const FourthStep: FC = () => {
 
     const { t } = useTranslation('subscriptionSteps');
 
+    const totalAmount: number = addOns.reduce(
+        (prevAmount, { monthlyAmount, yearlyAmount }) => {
+            const currentAmount = Number(
+                (billingMode === BillingModes.Monthly
+                    ? monthlyAmount
+                    : yearlyAmount
+                )
+                    .match(/\d+/gm)
+                    ?.pop(),
+            );
+
+            return prevAmount + currentAmount;
+        },
+        0,
+    );
+
     return (
         <div className={styles['summary__container']}>
-            <div className={styles.recap}>hello hello</div>
+            <div className={styles.recap}>
+                <div className={styles['addons__container']}>
+                    {addOns.map((addOn) => (
+                        <div className={styles.addon}>
+                            <Label key={addOn.title} color="cool_gray">
+                                {addOn.title}
+                            </Label>
+                            <Label color="marine-blue">
+                                {billingMode === BillingModes.Monthly
+                                    ? addOn.monthlyAmount
+                                    : addOn.yearlyAmount}
+                            </Label>
+                        </div>
+                    ))}
+                </div>
+            </div>
             <div className={styles.total}>
                 <Label color="cool_gray" fontStyle="semi-bold">
                     {t(
@@ -28,8 +59,8 @@ export const FourthStep: FC = () => {
                         }`,
                     )}
                 </Label>
-                <Label color="purplish-blue" fontStyle="semi-bold">
-                    100$
+                <Label color="purplish-blue" size="big" fontStyle="bold">
+                    {`$${totalAmount}/${billingMode === BillingModes.Monthly ? 'mo' : 'yr'}`}
                 </Label>
             </div>
         </div>

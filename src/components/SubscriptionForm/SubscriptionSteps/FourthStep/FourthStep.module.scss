@@ -7,6 +7,18 @@
         width: 100%;
         background-color: $magnolia;
         border-radius: 0.5rem;
+
+        .addons__container {
+            @include flex-container(column, flex-start, flex-start, 1.6rem);
+
+            padding: 2rem;
+
+            .addon {
+                @include flex-container(row, space-between);
+
+                width: 100%;
+            }
+        }
     }
 
     .total {

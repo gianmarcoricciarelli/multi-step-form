@@ -25,15 +25,18 @@ export const AddOnCard: FC<AddOnCardProps> = ({
     );
 
     const onChangeHandler = () => {
-        if (addOns.includes(title)) {
-            setAddOns(addOns.filter((addOn) => addOn !== title));
+        if (addOns.find((addOn) => addOn.title === title)) {
+            setAddOns(addOns.filter((addOn) => addOn.title !== title));
         } else {
-            setAddOns((prevAddOns) => [...prevAddOns, title]);
+            setAddOns((prevAddOns) => [
+                ...prevAddOns,
+                { title, subtitle, monthlyAmount, yearlyAmount },
+            ]);
         }
     };
 
     const addOnCardCssClasses = [styles['add-on-card']];
-    if (addOns.includes(title)) {
+    if (addOns.find((addOn) => addOn.title === title)) {
         addOnCardCssClasses.push(styles['add-on-card__selected']);
     }
 
@@ -44,7 +47,7 @@ export const AddOnCard: FC<AddOnCardProps> = ({
                     type="checkbox"
                     id={title}
                     name={title}
-                    checked={addOns.includes(title)}
+                    checked={!!addOns.find((addOn) => addOn.title === title)}
                     onChange={onChangeHandler}
                 />
                 <div className="">

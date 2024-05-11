@@ -7,3 +7,9 @@ export interface Plan {
     yearlyAmountLabel: string;
     freeMonths?: number;
 }
+export interface AddOn {
+    title: string;
+    subtitle: string;
+    monthlyAmount: string;
+    yearlyAmount: string;
+}
