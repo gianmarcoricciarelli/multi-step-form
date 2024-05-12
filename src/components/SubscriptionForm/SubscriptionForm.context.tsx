@@ -15,7 +15,7 @@ export interface SubscriptionContextProps {
     setStep: Dispatch<SetStateAction<SubscriptionStep>>;
     plan: PlansNames;
     setPlan: Dispatch<SetStateAction<PlansNames>>;
-    billingMode: BillingModes;
+    billingMode: BillingModes.Monthly | BillingModes.Yearly;
     setBillingMode: Dispatch<SetStateAction<BillingModes>>;
     addOns: AddOn[];
     setAddOns: Dispatch<SetStateAction<AddOn[]>>;

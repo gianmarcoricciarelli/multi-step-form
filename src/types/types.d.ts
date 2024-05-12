@@ -14,9 +14,8 @@ export type TextSizes = 'small' | 'regular' | 'big' | 'huge';
 export type FontStyles = 'regular' | 'semi-bold' | 'bold' | 'italic';
 
 // PLANS
-export type PlansNames = 'ARCADE' | 'ADVANCED' | 'PRO';
 export interface Plan {
-    name: PlansNames;
+    name: 'ARCADE' | 'ADVANCED' | 'PRO';
     monthlyAmountLabel: string;
     yearlyAmountLabel: string;
     freeMonths?: number;
