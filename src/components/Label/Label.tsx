@@ -1,17 +1,25 @@
 import { Colors, FontStyles, TextSizes } from '../../types/types';
 import { useCssClasses } from './useCssClasses';
-import { FC, HTMLAttributes, PropsWithChildren } from 'react';
+import {
+    FC,
+    HTMLAttributes,
+    MouseEventHandler,
+    PropsWithChildren,
+} from 'react';
 
 interface LabelProps {
-    color: Colors;
-    size?: TextSizes;
-    fontStyle?: FontStyles;
-    href?: string;
-    htmlFor?: string;
     className?:
         | HTMLAttributes<HTMLParagraphElement>['className']
         | HTMLAttributes<HTMLLabelElement>['className']
         | HTMLAttributes<HTMLAnchorElement>['className'];
+    href?: string;
+    htmlFor?: string;
+    color: Colors;
+    size?: TextSizes;
+    fontStyle?: FontStyles;
+    onClick?: MouseEventHandler<
+        HTMLAnchorElement | HTMLLabelElement | HTMLParagraphElement
+    >;
 }
 
 export const Label: FC<PropsWithChildren<LabelProps>> = ({
@@ -22,6 +30,7 @@ export const Label: FC<PropsWithChildren<LabelProps>> = ({
     color,
     size = 'regular',
     fontStyle = 'regular',
+    onClick,
 }) => {
     const cssClasses = useCssClasses({ className, size, fontStyle });
 
@@ -31,6 +40,7 @@ export const Label: FC<PropsWithChildren<LabelProps>> = ({
                 style={{ color: `var(--${color})` }}
                 className={cssClasses.join(' ')}
                 href={href}
+                onClick={onClick ?? undefined}
             >
                 {children}
             </a>
@@ -43,6 +53,7 @@ export const Label: FC<PropsWithChildren<LabelProps>> = ({
                 style={{ color: `var(--${color})` }}
                 className={cssClasses.join(' ')}
                 htmlFor={htmlFor}
+                onClick={onClick ?? undefined}
             >
                 {children}
             </label>
@@ -53,6 +64,7 @@ export const Label: FC<PropsWithChildren<LabelProps>> = ({
         <p
             style={{ color: `var(--${color})` }}
             className={cssClasses.join(' ')}
+            onClick={onClick ?? undefined}
         >
             {children}
         </p>

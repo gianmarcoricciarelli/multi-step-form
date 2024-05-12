@@ -9,7 +9,7 @@ import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const FourthStep: FC = () => {
-    const { plan, billingMode, addOns, plans } = useContext(
+    const { plan, billingMode, addOns, plans, setStep } = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
 
@@ -36,6 +36,8 @@ export const FourthStep: FC = () => {
     const totalAmount: number =
         addOnsAmount + Number(planAmount?.match(/\d+/gm)?.pop());
 
+    const onChangePlanAnchorClick = () => setStep(1);
+
     return (
         <div className={styles['summary__container']}>
             <div className={styles.recap}>
@@ -44,7 +46,11 @@ export const FourthStep: FC = () => {
                         <Label color="marine-blue" fontStyle="semi-bold">
                             {`${t(`SECOND_STEP.PLANS.${plan}`)} (${t('BILLING_MODES.' + billingMode)})`}
                         </Label>
-                        <Label color="cool_gray" href="#">
+                        <Label
+                            color="cool_gray"
+                            href="#"
+                            onClick={onChangePlanAnchorClick}
+                        >
                             Change
                         </Label>
                     </div>
@@ -55,10 +61,8 @@ export const FourthStep: FC = () => {
                 <div className={styles.separator} />
                 <div className={styles['addons__container']}>
                     {addOns.map((addOn) => (
-                        <div className={styles.addon}>
-                            <Label key={addOn.title} color="cool_gray">
-                                {addOn.title}
-                            </Label>
+                        <div key={addOn.title} className={styles.addon}>
+                            <Label color="cool_gray">{addOn.title}</Label>
                             <Label color="marine-blue">
                                 {billingMode === BillingModes.Monthly
                                     ? addOn.monthlyAmount
