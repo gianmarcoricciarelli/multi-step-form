@@ -1,8 +1,23 @@
+// TYPOGRAPHY
+export type Colors =
+    | 'marine-blue'
+    | 'purplish-blue'
+    | 'purple-blue'
+    | 'light-blue'
+    | 'strawberry-red'
+    | 'cool_gray'
+    | 'light_gray'
+    | 'magnolia'
+    | 'alabaster'
+    | 'white';
+export type TextSizes = 'small' | 'regular' | 'big' | 'huge';
+export type FontStyles = 'regular' | 'semi-bold' | 'bold' | 'italic';
+
 export interface FormValidator {
     isValid: (input: string) => boolean;
 }
 export interface Plan {
-    name: PlanName;
+    name: 'ARCADE' | 'ADVANCED' | 'PRO';
     monthlyAmountLabel: string;
     yearlyAmountLabel: string;
     freeMonths?: number;

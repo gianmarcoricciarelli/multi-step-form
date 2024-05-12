@@ -9,12 +9,13 @@ import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const FourthStep: FC = () => {
-    const { plan, billingMode, addOns } = useContext(
+    const { plan, billingMode, addOns, plans } = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
 
     const { t } = useTranslation('subscriptionSteps');
 
+    console.log('🚀 ~ plans:', plans);
     const totalAmount: number = addOns.reduce(
         (prevAmount, { monthlyAmount, yearlyAmount }) => {
             const currentAmount = Number(
@@ -37,14 +38,14 @@ export const FourthStep: FC = () => {
                 <div className={styles['plan__container']}>
                     <div>
                         <Label color="marine-blue" fontStyle="semi-bold">
-                            {`${t(`SECOND_STEP.PLANS.${plan}`)} (${billingMode === BillingModes.Monthly ? 'Monthly' : 'Yearly'})`}
+                            {`${t(`SECOND_STEP.PLANS.${plan}`)} (${t('BILLING_MODES.' + billingMode)})`}
                         </Label>
                         <Label color="cool_gray" href="#">
                             Change
                         </Label>
                     </div>
                     <Label color="marine-blue" fontStyle="semi-bold">
-                        1000
+                        {plans.find((p) => p.name === plan)?.name}
                     </Label>
                 </div>
                 <div className={styles.separator} />
@@ -65,13 +66,7 @@ export const FourthStep: FC = () => {
             </div>
             <div className={styles.total}>
                 <Label color="cool_gray" fontStyle="semi-bold">
-                    {t(
-                        `FOURTH_STEP.TOTAL_${
-                            billingMode === BillingModes.Monthly
-                                ? 'MONTHLY'
-                                : 'YEARLY'
-                        }`,
-                    )}
+                    {t(`FOURTH_STEP.TOTAL_${billingMode}`)}
                 </Label>
                 <Label color="purplish-blue" size="big" fontStyle="bold">
                     {`$${totalAmount}/${billingMode === BillingModes.Monthly ? 'mo' : 'yr'}`}

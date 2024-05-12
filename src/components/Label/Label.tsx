@@ -1,52 +1,29 @@
-import styles from './Label.module.scss';
+import { Colors, FontStyles, TextSizes } from '../../types/types';
+import { useCssClasses } from './useCssClasses';
 import { FC, HTMLAttributes, PropsWithChildren } from 'react';
 
-type LabelColors =
-    | 'marine-blue'
-    | 'purplish-blue'
-    | 'purple-blue'
-    | 'light-blue'
-    | 'strawberry-red'
-    | 'cool_gray'
-    | 'light_gray'
-    | 'magnolia'
-    | 'alabaster'
-    | 'white';
-type LabelSizes = 'small' | 'regular' | 'big' | 'huge';
-type LabelFontStyles = 'regular' | 'semi-bold' | 'bold' | 'italic';
 interface LabelProps {
-    color: LabelColors;
-    size?: LabelSizes;
-    fontStyle?: LabelFontStyles;
+    color: Colors;
+    size?: TextSizes;
+    fontStyle?: FontStyles;
     href?: string;
     htmlFor?: string;
     className?:
         | HTMLAttributes<HTMLParagraphElement>['className']
-        | HTMLAttributes<HTMLLabelElement>['className'];
+        | HTMLAttributes<HTMLLabelElement>['className']
+        | HTMLAttributes<HTMLAnchorElement>['className'];
 }
 
 export const Label: FC<PropsWithChildren<LabelProps>> = ({
     children,
+    className,
+    href,
+    htmlFor,
     color,
     size = 'regular',
     fontStyle = 'regular',
-    href,
-    htmlFor,
-    className,
 }) => {
-    const cssClasses: string[] = [];
-    if (className) {
-        cssClasses.push(className);
-    }
-    cssClasses.push(styles.label);
-
-    if (size === 'small') cssClasses.push(styles['label-size__small']);
-    if (size === 'big') cssClasses.push(styles['label-size__big']);
-    if (size === 'huge') cssClasses.push(styles['label-size__huge']);
-    if (fontStyle === 'semi-bold')
-        cssClasses.push(styles['label-style__semi-bold']);
-    if (fontStyle === 'bold') cssClasses.push(styles['label-style__bold']);
-    if (fontStyle === 'italic') cssClasses.push(styles['label-style__italic']);
+    const cssClasses = useCssClasses({ className, size, fontStyle });
 
     if (href) {
         return (

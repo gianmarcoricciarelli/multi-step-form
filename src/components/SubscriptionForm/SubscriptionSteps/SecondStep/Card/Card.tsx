@@ -12,6 +12,7 @@ interface CardProps {
     planName: PlansNames;
     monthlyAmountLabel: string;
     yearlyAmountLabel: string;
+    freeMonths: number;
     freeMonthsLabel?: string;
 }
 
@@ -19,6 +20,7 @@ export const Card: FC<CardProps> = ({
     planName,
     monthlyAmountLabel,
     yearlyAmountLabel,
+    freeMonths,
     freeMonthsLabel,
 }) => {
     const { plan, billingMode }: SubscriptionContextProps = useContext(
@@ -30,7 +32,7 @@ export const Card: FC<CardProps> = ({
     return (
         <div
             className={`${styles.card}${plan === planName ? ` ${styles['card__selected']}` : ''}`}
-            onClick={() => onCardClickHandler(planName)}
+            onClick={() => onCardClickHandler(planName, freeMonths)}
         >
             <img src={planNameToIconMap[planName].icon} />
             <div>

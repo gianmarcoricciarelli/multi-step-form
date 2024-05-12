@@ -1,5 +1,5 @@
 import { BillingModes, PlansNames, SubscriptionStep } from '../../types/enums';
-import { AddOn } from '../../types/types';
+import { AddOn, Plan } from '../../types/types';
 import {
     Dispatch,
     FC,
@@ -19,6 +19,7 @@ export interface SubscriptionContextProps {
     setBillingMode: Dispatch<SetStateAction<BillingModes>>;
     addOns: AddOn[];
     setAddOns: Dispatch<SetStateAction<AddOn[]>>;
+    plans: Plan[];
 }
 
 export const SubscriptionContext =
@@ -34,6 +35,30 @@ export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
     );
     const [addOns, setAddOns] = useState<AddOn[]>([]);
 
+    const plans: Plan[] = useMemo(
+        () => [
+            {
+                name: 'ARCADE',
+                monthlyAmountLabel: '$9/mo',
+                yearlyAmountLabel: '$90/yr',
+                freeMonths: 2,
+            },
+            {
+                name: 'ADVANCED',
+                monthlyAmountLabel: '$12/mo',
+                yearlyAmountLabel: '$120/yr',
+                freeMonths: 2,
+            },
+            {
+                name: 'PRO',
+                monthlyAmountLabel: '$15/mo',
+                yearlyAmountLabel: '$150/yr',
+                freeMonths: 2,
+            },
+        ],
+        [],
+    );
+
     const contextInternalState: SubscriptionContextProps = useMemo(
         () => ({
             step,
@@ -44,8 +69,9 @@ export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
             setBillingMode,
             addOns,
             setAddOns,
+            plans,
         }),
-        [addOns, billingMode, plan, step],
+        [addOns, billingMode, plan, plans, step],
     );
 
     return (

@@ -1,4 +1,8 @@
 {
+    "BILLING_MODES": {
+        "MONTHLY": "Monthly",
+        "YEARLY": "Yearly"
+    },
     "FIRST_STEP": {
         "NAME": "YOUR INFO",
         "SUBTITLE": "Please provide your name, email address, and phone number",

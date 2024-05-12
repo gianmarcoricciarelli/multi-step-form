@@ -6,7 +6,7 @@ import {
     SubscriptionContext,
     SubscriptionContextProps,
 } from '../../../SubscriptionForm.context';
-import { Context, Dispatch, SetStateAction, useContext, useMemo } from 'react';
+import { Context, useCallback, useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
 interface PlanIconAndLabel {
@@ -17,12 +17,20 @@ type PlanNameToIconMap = Record<PlansNames, PlanIconAndLabel>;
 
 export function usePlanSelection(): {
     planNameToIconMap: PlanNameToIconMap;
-    onCardClickHandler: Dispatch<SetStateAction<PlansNames>>;
+    onCardClickHandler: (plan: PlansNames, freeMonths: number) => void;
 } {
     const { t } = useTranslation('subscriptionSteps');
 
-    const { setPlan } = useContext(
+    const { setPlan, setFreeMonths } = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
+    );
+
+    const onCardClickHandler = useCallback(
+        (plan: PlansNames, freeMonths: number) => {
+            setPlan(plan);
+            setFreeMonths(freeMonths);
+        },
+        [setFreeMonths, setPlan],
     );
 
     const planNameToIconMap: PlanNameToIconMap = useMemo<PlanNameToIconMap>(
@@ -45,13 +53,13 @@ export function usePlanSelection(): {
 
     const toReturn = useMemo<{
         planNameToIconMap: PlanNameToIconMap;
-        onCardClickHandler: Dispatch<SetStateAction<PlansNames>>;
+        onCardClickHandler: (plan: PlansNames, freeMonths: number) => void;
     }>(
         () => ({
             planNameToIconMap,
-            onCardClickHandler: setPlan,
+            onCardClickHandler,
         }),
-        [planNameToIconMap, setPlan],
+        [onCardClickHandler, planNameToIconMap],
     );
 
     return toReturn;
