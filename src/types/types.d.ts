@@ -1,3 +1,5 @@
+import { PlansNames } from './enums';
+
 // TYPOGRAPHY
 export type Colors =
     | 'marine-blue'
@@ -15,7 +17,7 @@ export type FontStyles = 'regular' | 'semi-bold' | 'bold' | 'italic';
 
 // PLANS
 export interface Plan {
-    name: 'ARCADE' | 'ADVANCED' | 'PRO';
+    name: PlansNames;
     monthlyAmountLabel: string;
     yearlyAmountLabel: string;
     freeMonths?: number;

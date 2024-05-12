@@ -38,19 +38,19 @@ export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
     const plans: Plan[] = useMemo(
         () => [
             {
-                name: 'ARCADE',
+                name: PlansNames.Arcade,
                 monthlyAmountLabel: '$9/mo',
                 yearlyAmountLabel: '$90/yr',
                 freeMonths: 2,
             },
             {
-                name: 'ADVANCED',
+                name: PlansNames.Advanced,
                 monthlyAmountLabel: '$12/mo',
                 yearlyAmountLabel: '$120/yr',
                 freeMonths: 2,
             },
             {
-                name: 'PRO',
+                name: PlansNames.Pro,
                 monthlyAmountLabel: '$15/mo',
                 yearlyAmountLabel: '$150/yr',
                 freeMonths: 2,
