@@ -1,9 +1,9 @@
+import { BillingToggle } from '../../../BillingToggle/BillingToggle';
+import { Card } from '../../../Card/Card';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
 } from '../../SubscriptionForm.context';
-import { BillingToggle } from './BillingToggle/BillingToggle';
-import { Card } from './Card/Card';
 import styles from './SecondStep.module.scss';
 import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
