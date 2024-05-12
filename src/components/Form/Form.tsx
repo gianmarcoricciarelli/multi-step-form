@@ -1,11 +1,11 @@
-import { SubscriptionStep, InputType } from '../../../../../types/enums';
-import { FormValidator } from '../../../../../types/types';
+import { SubscriptionStep, InputType } from '../../types/enums';
+import { InputProps } from '../Input/Input';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../../../../SubscriptionForm/SubscriptionForm.context';
-import { InputProps } from '../Input/Input';
+} from '../SubscriptionForm/SubscriptionForm.context';
 import styles from './Form.module.scss';
+import { useFormValidators } from './useFormValidators';
 import React, {
     FC,
     type FormEvent,
@@ -17,25 +17,9 @@ import React, {
     Context,
 } from 'react';
 
-const validators: Record<InputType, FormValidator> = {
-    text: {
-        isValid(input) {
-            return !!input?.length;
-        },
-    },
-    tel: {
-        isValid(input) {
-            return !!input?.length;
-        },
-    },
-    email: {
-        isValid(input) {
-            return !!input?.length;
-        },
-    },
-};
-
 export const Form: FC<PropsWithChildren> = ({ children }) => {
+    const validators = useFormValidators();
+
     const { step, setStep }: SubscriptionContextProps = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );

@@ -1,8 +1,13 @@
-import { InputType } from '../../../../../types/enums';
-import { Label } from '../../../../Label/Label';
+import { Label } from '../Label/Label';
 import styles from './Input.module.scss';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
+
+enum InputType {
+    Text = 'text',
+    Telephone = 'tel',
+    Email = 'email',
+}
 
 export interface InputProps {
     id: string;

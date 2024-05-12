@@ -1,6 +1,6 @@
 import { InputType } from '../../../../types/enums';
-import { Form } from './Form/Form';
-import { Input } from './Input/Input';
+import { Form } from '../../../Form/Form';
+import { Input } from '../../../Input/Input';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 

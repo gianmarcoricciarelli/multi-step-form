@@ -13,9 +13,6 @@ export type Colors =
 export type TextSizes = 'small' | 'regular' | 'big' | 'huge';
 export type FontStyles = 'regular' | 'semi-bold' | 'bold' | 'italic';
 
-export interface FormValidator {
-    isValid: (input: string) => boolean;
-}
 export interface Plan {
     name: 'ARCADE' | 'ADVANCED' | 'PRO';
     monthlyAmountLabel: string;
