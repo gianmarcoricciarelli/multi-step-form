@@ -15,8 +15,10 @@ export const FourthStep: FC = () => {
 
     const { t } = useTranslation('subscriptionSteps');
 
-    console.log('🚀 ~ plans:', plans);
-    const totalAmount: number = addOns.reduce(
+    const planAmount: string = plans.find((p) => p.name === plan)![
+        `${billingMode === BillingModes.Monthly ? 'monthly' : 'yearly'}AmountLabel`
+    ];
+    const addOnsAmount: number = addOns.reduce(
         (prevAmount, { monthlyAmount, yearlyAmount }) => {
             const currentAmount = Number(
                 (billingMode === BillingModes.Monthly
@@ -31,6 +33,8 @@ export const FourthStep: FC = () => {
         },
         0,
     );
+    const totalAmount: number =
+        addOnsAmount + Number(planAmount?.match(/\d+/gm)?.pop());
 
     return (
         <div className={styles['summary__container']}>
@@ -45,7 +49,7 @@ export const FourthStep: FC = () => {
                         </Label>
                     </div>
                     <Label color="marine-blue" fontStyle="semi-bold">
-                        {plans.find((p) => p.name === plan)?.name}
+                        {planAmount}
                     </Label>
                 </div>
                 <div className={styles.separator} />
