@@ -1,0 +1,6 @@
+.container {
+    @include width-and-height(100%, 100%);
+    @include flex-container(column, center, center, 2rem);
+
+    text-align: center;
+}
