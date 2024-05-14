@@ -4,6 +4,7 @@ import {
     SubscriptionContextProps,
 } from './SubscriptionForm.context';
 import styles from './SubscriptionForm.module.scss';
+import { FinalStep } from './SubscriptionSteps/FinalStep/FinalStep';
 import { FirstStep } from './SubscriptionSteps/FirstStep/FirstStep';
 import { FourthStep } from './SubscriptionSteps/FourthStep/FourthStep';
 import { SecondStep } from './SubscriptionSteps/SecondStep/SecondStep';
@@ -25,7 +26,7 @@ export const SubscriptionForm: FC = () => {
 
     const { t } = useTranslation('subscriptionSteps');
 
-    const headerLabelsToStepMap: Record<number, HeaderLabels> = {
+    const headerLabelsToStepMap: Record<number, HeaderLabels | null> = {
         [SubscriptionStep.UserDataForm]: {
             title: t('FIRST_STEP.TITLE'),
             subtitle: t('FIRST_STEP.SUBTITLE'),
@@ -42,6 +43,7 @@ export const SubscriptionForm: FC = () => {
             title: t('FOURTH_STEP.TITLE'),
             subtitle: t('FOURTH_STEP.SUBTITLE'),
         },
+        [SubscriptionStep.Final]: null,
     };
 
     return (
@@ -49,45 +51,50 @@ export const SubscriptionForm: FC = () => {
             <SubscriptionSteps />
             <div className={styles['subscription-step__container']}>
                 <>
-                    <StepHeader
-                        title={headerLabelsToStepMap[step].title}
-                        subtitle={headerLabelsToStepMap[step].subtitle}
-                    />
+                    {step !== SubscriptionStep.Final && (
+                        <StepHeader
+                            title={headerLabelsToStepMap[step]!.title}
+                            subtitle={headerLabelsToStepMap[step]!.subtitle}
+                        />
+                    )}
                     {step === SubscriptionStep.UserDataForm && <FirstStep />}
                     {step === SubscriptionStep.SubscriptionSelection && (
                         <SecondStep />
                     )}
                     {step === SubscriptionStep.AddOnsSelection && <ThirdStep />}
                     {step === SubscriptionStep.Summary && <FourthStep />}
+                    {step === SubscriptionStep.Final && <FinalStep />}
                 </>
-                <div
-                    className={`${styles['buttons-container']}${step !== 0 ? ` ${styles['buttons-container-with-go-back']}` : ''}`}
-                >
-                    {step !== 0 && (
+                {step !== SubscriptionStep.Final && (
+                    <div
+                        className={`${styles['buttons-container']}${step !== 0 ? ` ${styles['buttons-container-with-go-back']}` : ''}`}
+                    >
+                        {step !== 0 && (
+                            <button
+                                className={styles['go-back-button']}
+                                onClick={() =>
+                                    setStep(
+                                        (prevStep) =>
+                                            (prevStep - 1) as SubscriptionStep,
+                                    )
+                                }
+                            >
+                                {t('GO_BACK')}
+                            </button>
+                        )}
                         <button
-                            className={styles['go-back-button']}
+                            className={styles['next-step-button']}
                             onClick={() =>
                                 setStep(
                                     (prevStep) =>
-                                        (prevStep - 1) as SubscriptionStep,
+                                        (prevStep + 1) as SubscriptionStep,
                                 )
                             }
                         >
-                            {t('GO_BACK')}
+                            {t('NEXT_STEP')}
                         </button>
-                    )}
-                    <button
-                        className={styles['next-step-button']}
-                        onClick={() =>
-                            setStep(
-                                (prevStep) =>
-                                    (prevStep + 1) as SubscriptionStep,
-                            )
-                        }
-                    >
-                        {t('NEXT_STEP')}
-                    </button>
-                </div>
+                    </div>
+                )}
             </div>
         </div>
     );

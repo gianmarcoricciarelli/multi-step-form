@@ -3,6 +3,10 @@
         "MONTHLY": "Monthly",
         "YEARLY": "Yearly"
     },
+    "FINAL_STEP": {
+        "SUBTITLE": "Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loregaming.com.",
+        "TITLE": "Thank you!"
+    },
     "FIRST_STEP": {
         "NAME": "YOUR INFO",
         "SUBTITLE": "Please provide your name, email address, and phone number",

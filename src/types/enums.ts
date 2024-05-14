@@ -8,6 +8,7 @@ export enum SubscriptionStep {
     SubscriptionSelection = 1,
     AddOnsSelection = 2,
     Summary = 3,
+    Final = 4,
 }
 export enum PlansNames {
     Arcade = 'ARCADE',
