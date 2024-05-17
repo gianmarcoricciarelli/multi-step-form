@@ -20,9 +20,9 @@ interface HeaderLabels {
 }
 
 export const SubscriptionForm: FC = () => {
-    const { step, setStep }: SubscriptionContextProps = useContext(
-        SubscriptionContext as Context<SubscriptionContextProps>,
-    );
+    const { step, setStep, userCanProceed }: SubscriptionContextProps =
+        useContext(SubscriptionContext as Context<SubscriptionContextProps>);
+    console.log('🚀 ~ userCanProceed:', userCanProceed);
 
     const { t } = useTranslation('subscriptionSteps');
 
@@ -84,6 +84,8 @@ export const SubscriptionForm: FC = () => {
                         )}
                         <button
                             className={styles['next-step-button']}
+                            disabled={!userCanProceed}
+                            type="submit"
                             onClick={() =>
                                 setStep(
                                     (prevStep) =>

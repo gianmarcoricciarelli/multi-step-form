@@ -27,6 +27,11 @@
             .next-step-button {
                 background-color: $marine-blue;
                 color: $white;
+                transition: all 300ms;
+
+                &[disabled] {
+                    background-color: $light-gray;
+                }
             }
 
             .go-back-button {

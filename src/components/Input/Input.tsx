@@ -1,6 +1,7 @@
+import { useFormValidators } from '../Form/useFormValidators';
 import { Label } from '../Label/Label';
 import styles from './Input.module.scss';
-import { FC } from 'react';
+import { ChangeEvent, Dispatch, FC, SetStateAction } from 'react';
 import { useTranslation } from 'react-i18next';
 
 enum InputType {
@@ -16,6 +17,8 @@ export interface InputProps {
     placeHolder: string;
     labelText?: string;
     isInvalid?: boolean;
+    onInputIsInvalid?: Dispatch<SetStateAction<string[]>>;
+    onInputChangedForFirstTime?: Dispatch<SetStateAction<boolean>>;
 }
 
 export const Input: FC<InputProps> = ({
@@ -25,8 +28,33 @@ export const Input: FC<InputProps> = ({
     placeHolder,
     labelText,
     isInvalid,
+    onInputIsInvalid,
+    onInputChangedForFirstTime,
 }) => {
     const { t } = useTranslation('input');
+
+    const validators = useFormValidators();
+
+    const onChangeHandler = ({
+        target: { value },
+    }: ChangeEvent<HTMLInputElement>) => {
+        onInputChangedForFirstTime?.(false);
+        onInputIsInvalid?.((prevInvalidInputsId) => {
+            if (
+                validators[type].isValid(value) &&
+                prevInvalidInputsId.includes(id)
+            ) {
+                return prevInvalidInputsId.filter((inputId) => inputId !== id);
+            }
+            if (
+                !validators[type].isValid(value) &&
+                !prevInvalidInputsId.includes(id)
+            ) {
+                return [...prevInvalidInputsId, id];
+            }
+            return prevInvalidInputsId;
+        });
+    };
 
     return (
         <div className={styles['container']}>
@@ -59,6 +87,7 @@ export const Input: FC<InputProps> = ({
                 type={type}
                 placeholder={placeHolder}
                 formNoValidate
+                onChange={onChangeHandler}
             />
         </div>
     );
