@@ -1,5 +1,9 @@
 import { SubscriptionStep } from '../../types/enums';
 import {
+    FormStepsValidatorsContext,
+    FormStepsValidatorsContextProps,
+} from './FormStepsValidatorsContext';
+import {
     SubscriptionContext,
     SubscriptionContextProps,
 } from './SubscriptionForm.context';
@@ -11,6 +15,7 @@ import { SecondStep } from './SubscriptionSteps/SecondStep/SecondStep';
 import { StepHeader } from './SubscriptionSteps/StepHeader/StepHeader';
 import { SubscriptionSteps } from './SubscriptionSteps/SubscriptionSteps';
 import { ThirdStep } from './SubscriptionSteps/ThirdStep/ThirdStep';
+import { headerLabelsToStepMap } from './utilities';
 import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -20,31 +25,19 @@ interface HeaderLabels {
 }
 
 export const SubscriptionForm: FC = () => {
-    const { step, setStep, userCanProceed }: SubscriptionContextProps =
-        useContext(SubscriptionContext as Context<SubscriptionContextProps>);
-    console.log('🚀 ~ userCanProceed:', userCanProceed);
+    const {
+        step,
+        setStep,
+        userCanProceed,
+        setUserCanProceed,
+    }: SubscriptionContextProps = useContext(
+        SubscriptionContext as Context<SubscriptionContextProps>,
+    );
+    const stepsValidators = useContext(
+        FormStepsValidatorsContext as Context<FormStepsValidatorsContextProps>,
+    );
 
     const { t } = useTranslation('subscriptionSteps');
-
-    const headerLabelsToStepMap: Record<number, HeaderLabels | null> = {
-        [SubscriptionStep.UserDataForm]: {
-            title: t('FIRST_STEP.TITLE'),
-            subtitle: t('FIRST_STEP.SUBTITLE'),
-        },
-        [SubscriptionStep.SubscriptionSelection]: {
-            title: t('SECOND_STEP.TITLE'),
-            subtitle: t('SECOND_STEP.SUBTITLE'),
-        },
-        [SubscriptionStep.AddOnsSelection]: {
-            title: t('THIRD_STEP.TITLE'),
-            subtitle: t('THIRD_STEP.SUBTITLE'),
-        },
-        [SubscriptionStep.Summary]: {
-            title: t('FOURTH_STEP.TITLE'),
-            subtitle: t('FOURTH_STEP.SUBTITLE'),
-        },
-        [SubscriptionStep.Final]: null,
-    };
 
     return (
         <div className={styles.container}>
@@ -86,12 +79,13 @@ export const SubscriptionForm: FC = () => {
                             className={styles['next-step-button']}
                             disabled={!userCanProceed}
                             type="submit"
-                            onClick={() =>
+                            onClick={() => {
                                 setStep(
                                     (prevStep) =>
                                         (prevStep + 1) as SubscriptionStep,
-                                )
-                            }
+                                );
+                                setUserCanProceed(false);
+                            }}
                         >
                             {t('NEXT_STEP')}
                         </button>

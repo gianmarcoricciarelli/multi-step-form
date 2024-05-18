@@ -1,7 +1,18 @@
 import { useFormValidators } from '../Form/useFormValidators';
 import { Label } from '../Label/Label';
+import {
+    SubscriptionContext,
+    SubscriptionContextProps,
+} from '../SubscriptionForm/SubscriptionForm.context';
 import styles from './Input.module.scss';
-import { ChangeEvent, Dispatch, FC, SetStateAction } from 'react';
+import {
+    ChangeEvent,
+    Context,
+    Dispatch,
+    FC,
+    SetStateAction,
+    useContext,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 
 enum InputType {
@@ -16,9 +27,8 @@ export interface InputProps {
     isRequired?: boolean;
     placeHolder: string;
     labelText?: string;
-    isInvalid?: boolean;
-    onInputIsInvalid?: Dispatch<SetStateAction<string[]>>;
-    onInputChangedForFirstTime?: Dispatch<SetStateAction<boolean>>;
+    isInvalid: boolean;
+    onInputIsInvalid: Dispatch<SetStateAction<string[]>>;
 }
 
 export const Input: FC<InputProps> = ({
@@ -29,30 +39,32 @@ export const Input: FC<InputProps> = ({
     labelText,
     isInvalid,
     onInputIsInvalid,
-    onInputChangedForFirstTime,
 }) => {
     const { t } = useTranslation('input');
 
-    const validators = useFormValidators();
+    const { [type]: validator } = useFormValidators();
+
+    const { setUserCanProceed } = useContext(
+        SubscriptionContext as Context<SubscriptionContextProps>,
+    );
 
     const onChangeHandler = ({
         target: { value },
     }: ChangeEvent<HTMLInputElement>) => {
-        onInputChangedForFirstTime?.(false);
-        onInputIsInvalid?.((prevInvalidInputsId) => {
-            if (
-                validators[type].isValid(value) &&
-                prevInvalidInputsId.includes(id)
-            ) {
-                return prevInvalidInputsId.filter((inputId) => inputId !== id);
+        onInputIsInvalid?.((prevState) => {
+            const inputIsValid = validator.isValid(value);
+            const idHasToBeRemoved = inputIsValid && prevState.includes(id);
+            const idHasToBeAdded = !inputIsValid && !prevState.includes(id);
+
+            if (idHasToBeRemoved) {
+                return prevState.filter(
+                    (invalidInputIds) => invalidInputIds !== id,
+                );
+            } else if (idHasToBeAdded) {
+                return [...prevState, id];
             }
-            if (
-                !validators[type].isValid(value) &&
-                !prevInvalidInputsId.includes(id)
-            ) {
-                return [...prevInvalidInputsId, id];
-            }
-            return prevInvalidInputsId;
+
+            return prevState;
         });
     };
 
