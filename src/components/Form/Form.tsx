@@ -1,8 +1,41 @@
+import { SubscriptionStep } from '../../types/enums';
 import { InputProps } from '../Input/Input';
+import {
+    FormStepsValidatorsContext,
+    FormStepsValidatorsContextProps,
+} from '../SubscriptionForm/FormStepsValidatorsContext';
 import styles from './Form.module.scss';
-import React, { FC, PropsWithChildren, ReactElement } from 'react';
+import React, {
+    Context,
+    FC,
+    PropsWithChildren,
+    ReactElement,
+    useContext,
+    useEffect,
+} from 'react';
 
 export const Form: FC<PropsWithChildren> = ({ children }) => {
+    const {
+        globalFormState: { userCanProceed, setUserCanProceed },
+        [SubscriptionStep.UserDataForm]: {
+            params: { validInputsIds },
+        },
+    } = useContext(
+        FormStepsValidatorsContext as Context<FormStepsValidatorsContextProps>,
+    );
+
+    useEffect(() => {
+        if (validInputsIds.length === 3) {
+            if (!userCanProceed) {
+                setUserCanProceed(true);
+            }
+        } else {
+            if (userCanProceed) {
+                setUserCanProceed(false);
+            }
+        }
+    }, [setUserCanProceed, userCanProceed, validInputsIds.length]);
+
     return (
         <form className={styles.container} noValidate>
             <div className={styles['input-container']}>
