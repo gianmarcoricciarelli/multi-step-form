@@ -1,9 +1,9 @@
-import { BillingModes } from '../../types/enums';
-import { Label } from '../Label/Label';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../SubscriptionForm/SubscriptionForm.context';
+} from '../../contexts/SubscriptionForm.context';
+import { BillingModes } from '../../types/enums';
+import { Label } from '../Label/Label';
 import styles from './BillingToggle.module.scss';
 import gsap from 'gsap';
 import { Context, FC, useContext, useRef } from 'react';

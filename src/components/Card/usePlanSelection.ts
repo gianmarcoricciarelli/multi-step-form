@@ -1,11 +1,11 @@
 import advancedIcon from '../../assets/images/icon-advanced.svg';
 import arcadeIcon from '../../assets/images/icon-arcade.svg';
 import proIcon from '../../assets/images/icon-pro.svg';
-import { PlansNames } from '../../types/enums';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../SubscriptionForm/SubscriptionForm.context';
+} from '../../contexts/SubscriptionForm.context';
+import { PlansNames } from '../../types/enums';
 import { Context, useCallback, useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 

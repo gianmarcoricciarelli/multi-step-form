@@ -1,9 +1,9 @@
-import { PlansNames, BillingModes } from '../../types/enums';
-import { Label } from '../Label/Label';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../SubscriptionForm/SubscriptionForm.context';
+} from '../../contexts/SubscriptionForm.context';
+import { PlansNames, BillingModes } from '../../types/enums';
+import { Label } from '../Label/Label';
 import styles from './Card.module.scss';
 import { usePlanSelection } from './usePlanSelection';
 import { Context, FC, useContext } from 'react';
