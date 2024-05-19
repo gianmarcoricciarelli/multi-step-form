@@ -1,6 +1,6 @@
-import { BillingModes, PlansNames, SubscriptionStep } from '../../types/enums';
-import { AddOn, Plan } from '../../types/types';
-import { usePlansData } from './usePlansData';
+import { usePlansData } from '../components/SubscriptionForm/usePlansData';
+import { BillingModes, PlansNames, SubscriptionStep } from '../types/enums';
+import { AddOn, Plan } from '../types/types';
 import {
     Dispatch,
     FC,

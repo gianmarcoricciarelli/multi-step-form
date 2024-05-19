@@ -1,12 +1,12 @@
-import { SubscriptionStep } from '../../types/enums';
 import {
     FormStepsValidatorsContext,
     FormStepsValidatorsContextProps,
-} from './FormStepsValidatorsContext';
+} from '../../contexts/FormStepsValidatorsContext';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from './SubscriptionForm.context';
+} from '../../contexts/SubscriptionForm.context';
+import { SubscriptionStep } from '../../types/enums';
 import styles from './SubscriptionForm.module.scss';
 import { FinalStep } from './SubscriptionSteps/FinalStep/FinalStep';
 import { FirstStep } from './SubscriptionSteps/FirstStep/FirstStep';
@@ -20,7 +20,6 @@ import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const SubscriptionForm: FC = () => {
-    console.log('Rendering SubscriptionForm');
     const { step, setStep }: SubscriptionContextProps = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );

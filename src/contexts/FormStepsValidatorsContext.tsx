@@ -1,4 +1,4 @@
-import { SubscriptionStep } from '../../types/enums';
+import { SubscriptionStep } from '../types/enums';
 import {
     Dispatch,
     FC,
