@@ -1,7 +1,7 @@
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../../contexts/SubscriptionForm.context';
+} from '../../contexts/SubscriptionFormContext';
 import { PlansNames, BillingModes } from '../../types/enums';
 import { Label } from '../Label/Label';
 import styles from './Card.module.scss';

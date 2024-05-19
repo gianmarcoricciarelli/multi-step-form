@@ -5,7 +5,7 @@ import {
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../../contexts/SubscriptionForm.context';
+} from '../../contexts/SubscriptionFormContext';
 import { SubscriptionStep } from '../../types/enums';
 import styles from './SubscriptionForm.module.scss';
 import { FinalStep } from './SubscriptionSteps/FinalStep/FinalStep';

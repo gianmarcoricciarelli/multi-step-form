@@ -1,7 +1,7 @@
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../../contexts/SubscriptionForm.context';
+} from '../../contexts/SubscriptionFormContext';
 import { BillingModes } from '../../types/enums';
 import { Label } from '../Label/Label';
 import styles from './BillingToggle.module.scss';

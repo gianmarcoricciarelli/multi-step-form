@@ -4,7 +4,7 @@ import proIcon from '../../assets/images/icon-pro.svg';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../../contexts/SubscriptionForm.context';
+} from '../../contexts/SubscriptionFormContext';
 import { PlansNames } from '../../types/enums';
 import { Context, useCallback, useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';

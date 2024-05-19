@@ -1,7 +1,7 @@
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../../../../contexts/SubscriptionForm.context';
+} from '../../../../contexts/SubscriptionFormContext';
 import { BillingToggle } from '../../../BillingToggle/BillingToggle';
 import { Card } from '../../../Card/Card';
 import styles from './SecondStep.module.scss';

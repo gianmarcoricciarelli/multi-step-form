@@ -1,7 +1,7 @@
 import App from './App.tsx';
 import { FormDataContextProvider } from './contexts/FormDataContext.tsx';
 import { FormStepsValidatorsContextProvider } from './contexts/FormStepsValidatorsContext.tsx';
-import { SubscriptionContextProvider } from './contexts/SubscriptionForm.context.tsx';
+import { SubscriptionContextProvider } from './contexts/SubscriptionFormContext.tsx';
 import './i18n/i18n.ts';
 import './index.css';
 import ReactDOM from 'react-dom/client';
