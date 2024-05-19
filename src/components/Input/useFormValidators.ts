@@ -2,10 +2,10 @@ import { InputType } from '../../types/enums';
 import { useMemo } from 'react';
 
 interface FormValidator {
-    isValid: (input: string) => boolean;
+    isValid: (inputValue: string) => boolean;
 }
 
-export function useFormValidators() {
+export function useFormValidators(type: InputType): FormValidator {
     const validators: Record<InputType, FormValidator> = useMemo(
         () => ({
             text: {
@@ -27,5 +27,5 @@ export function useFormValidators() {
         [],
     );
 
-    return validators;
+    return validators[type];
 }
