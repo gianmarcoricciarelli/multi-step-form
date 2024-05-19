@@ -20,6 +20,7 @@ import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const SubscriptionForm: FC = () => {
+    console.log('Rendering SubscriptionForm');
     const { step, setStep }: SubscriptionContextProps = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );

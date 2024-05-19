@@ -15,6 +15,8 @@ import React, {
 } from 'react';
 
 export const Form: FC<PropsWithChildren> = ({ children }) => {
+    console.log('Rendering Form');
+
     const {
         globalFormState: { userCanProceed, setUserCanProceed },
         [SubscriptionStep.UserDataForm]: {

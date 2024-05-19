@@ -5,27 +5,28 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const FirstStep: FC = () => {
+    console.log('Rendering FirstStep');
     const { t } = useTranslation('input');
 
     return (
         <>
             <Form>
                 <Input
-                    id="name"
+                    id={InputType.Text}
                     type={InputType.Text}
                     isRequired
                     placeHolder={t('NAME_PLACEHOLDER')}
                     labelText={t('NAME_TEXT')}
                 />
                 <Input
-                    id="emailAddress"
+                    id={InputType.Email}
                     type={InputType.Email}
                     isRequired
                     placeHolder={t('EMAIL_PLACEHOLDER')}
                     labelText={t('EMAIL_TEXT')}
                 />
                 <Input
-                    id="phoneNumber"
+                    id={InputType.Telephone}
                     type={InputType.Telephone}
                     isRequired
                     placeHolder={t('PHONE_PLACEHOLDER')}

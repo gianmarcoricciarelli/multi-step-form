@@ -1,6 +1,7 @@
 import App from './App.tsx';
 import { FormStepsValidatorsContextProvider } from './components/SubscriptionForm/FormStepsValidatorsContext.tsx';
 import { SubscriptionContextProvider } from './components/SubscriptionForm/SubscriptionForm.context.tsx';
+import { FormDataContextProvider } from './contexts/FormDataContext.tsx';
 import './i18n/i18n.ts';
 import './index.css';
 import ReactDOM from 'react-dom/client';
@@ -8,7 +9,9 @@ import ReactDOM from 'react-dom/client';
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <SubscriptionContextProvider>
         <FormStepsValidatorsContextProvider>
-            <App />
+            <FormDataContextProvider>
+                <App />
+            </FormDataContextProvider>
         </FormStepsValidatorsContextProvider>
     </SubscriptionContextProvider>,
 );

@@ -1,4 +1,8 @@
-import { SubscriptionStep } from '../../types/enums';
+import {
+    FormDataContext,
+    FormDataContextProps,
+} from '../../contexts/FormDataContext';
+import { InputType, SubscriptionStep } from '../../types/enums';
 import { Label } from '../Label/Label';
 import {
     FormStepsValidatorsContext,
@@ -9,14 +13,8 @@ import { useFormValidators } from './useFormValidators';
 import { ChangeEventHandler, Context, FC, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-enum InputType {
-    Text = 'text',
-    Telephone = 'tel',
-    Email = 'email',
-}
-
 export interface InputProps {
-    id: string;
+    id: InputType;
     type: InputType;
     isRequired?: boolean;
     placeHolder: string;
@@ -30,6 +28,7 @@ export const Input: FC<InputProps> = ({
     placeHolder,
     labelText,
 }) => {
+    console.log(`Rendering ${id}`);
     const { t } = useTranslation('input');
 
     const {
@@ -39,6 +38,12 @@ export const Input: FC<InputProps> = ({
     } = useContext(
         FormStepsValidatorsContext as Context<FormStepsValidatorsContextProps>,
     );
+    const {
+        [SubscriptionStep.UserDataForm]: {
+            data: { [type]: currentValue },
+            setData,
+        },
+    } = useContext(FormDataContext as Context<FormDataContextProps>);
 
     const validatorObj = useFormValidators(type);
 
@@ -49,6 +54,8 @@ export const Input: FC<InputProps> = ({
     const onChangeHandler: ChangeEventHandler<HTMLInputElement> = ({
         target: { value },
     }) => {
+        setData((prevData) => ({ ...prevData, [type]: value }));
+
         if (inputIsPristine) {
             setInputIsPristine(false);
         }
@@ -101,6 +108,7 @@ export const Input: FC<InputProps> = ({
                 name={id}
                 type={type}
                 placeholder={placeHolder}
+                value={currentValue}
                 formNoValidate
                 onChange={onChangeHandler}
             />
