@@ -5,7 +5,6 @@ import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const FirstStep: FC = () => {
-    console.log('Rendering FirstStep');
     const { t } = useTranslation('input');
 
     return (

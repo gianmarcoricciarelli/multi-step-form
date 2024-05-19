@@ -28,7 +28,6 @@ export const Input: FC<InputProps> = ({
     placeHolder,
     labelText,
 }) => {
-    console.log(`Rendering ${id}`);
     const { t } = useTranslation('input');
 
     const {
