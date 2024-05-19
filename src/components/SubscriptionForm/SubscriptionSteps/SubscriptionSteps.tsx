@@ -1,9 +1,9 @@
-import { SubscriptionStep } from '../../../types/enums';
-import { Label } from '../../Label/Label';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../SubscriptionForm.context';
+} from '../../../contexts/SubscriptionForm.context';
+import { SubscriptionStep } from '../../../types/enums';
+import { Label } from '../../Label/Label';
 import styles from './SubscriptionSteps.module.scss';
 import { Context, FC, useContext } from 'react';
 
