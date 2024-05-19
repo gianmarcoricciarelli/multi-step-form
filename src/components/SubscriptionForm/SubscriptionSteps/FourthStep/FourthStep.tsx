@@ -1,9 +1,9 @@
-import { BillingModes } from '../../../../types/enums';
-import { Label } from '../../../Label/Label';
 import {
     SubscriptionContext,
     SubscriptionContextProps,
-} from '../../SubscriptionForm.context';
+} from '../../../../contexts/SubscriptionForm.context';
+import { BillingModes } from '../../../../types/enums';
+import { Label } from '../../../Label/Label';
 import styles from './FourthStep.module.scss';
 import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
