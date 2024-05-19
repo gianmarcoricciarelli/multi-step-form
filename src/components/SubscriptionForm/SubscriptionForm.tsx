@@ -19,21 +19,13 @@ import { headerLabelsToStepMap } from './utilities';
 import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
-interface HeaderLabels {
-    title: string;
-    subtitle: string;
-}
-
 export const SubscriptionForm: FC = () => {
-    const {
-        step,
-        setStep,
-        userCanProceed,
-        setUserCanProceed,
-    }: SubscriptionContextProps = useContext(
+    const { step, setStep }: SubscriptionContextProps = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
-    const stepsValidators = useContext(
+    const {
+        globalFormState: { userCanProceed },
+    } = useContext(
         FormStepsValidatorsContext as Context<FormStepsValidatorsContextProps>,
     );
 
@@ -79,13 +71,12 @@ export const SubscriptionForm: FC = () => {
                             className={styles['next-step-button']}
                             disabled={!userCanProceed}
                             type="submit"
-                            onClick={() => {
+                            onClick={() =>
                                 setStep(
                                     (prevStep) =>
                                         (prevStep + 1) as SubscriptionStep,
-                                );
-                                setUserCanProceed(false);
-                            }}
+                                )
+                            }
                         >
                             {t('NEXT_STEP')}
                         </button>

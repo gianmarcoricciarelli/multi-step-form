@@ -21,8 +21,6 @@ export interface SubscriptionContextProps {
     addOns: AddOn[];
     setAddOns: Dispatch<SetStateAction<AddOn[]>>;
     plans: Plan[];
-    userCanProceed: boolean;
-    setUserCanProceed: Dispatch<SetStateAction<boolean>>;
 }
 
 export const SubscriptionContext =
@@ -37,7 +35,6 @@ export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
         BillingModes.Monthly,
     );
     const [addOns, setAddOns] = useState<AddOn[]>([]);
-    const [userCanProceed, setUserCanProceed] = useState(false);
 
     const plans = usePlansData();
 
@@ -52,10 +49,8 @@ export const SubscriptionContextProvider: FC<PropsWithChildren> = ({
             addOns,
             setAddOns,
             plans,
-            userCanProceed,
-            setUserCanProceed,
         }),
-        [addOns, billingMode, plan, plans, step, userCanProceed],
+        [addOns, billingMode, plan, plans, step],
     );
 
     return (

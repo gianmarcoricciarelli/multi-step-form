@@ -6,7 +6,7 @@ import {
 } from '../SubscriptionForm/FormStepsValidatorsContext';
 import styles from './Input.module.scss';
 import { useFormValidators } from './useFormValidators';
-import { ChangeEventHandler, Context, FC, useContext } from 'react';
+import { ChangeEventHandler, Context, FC, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 enum InputType {
@@ -42,11 +42,17 @@ export const Input: FC<InputProps> = ({
 
     const validatorObj = useFormValidators(type);
 
-    const isInvalid = validInputsIds.includes(id);
+    const [inputIsPristine, setInputIsPristine] = useState(true);
+
+    const isInvalid = !validInputsIds.includes(id) && !inputIsPristine;
 
     const onChangeHandler: ChangeEventHandler<HTMLInputElement> = ({
         target: { value },
     }) => {
+        if (inputIsPristine) {
+            setInputIsPristine(false);
+        }
+
         if (validatorObj.isValid(value)) {
             if (!validInputsIds.includes(id)) {
                 setValidInputIds((prevValidInputIds) => [
