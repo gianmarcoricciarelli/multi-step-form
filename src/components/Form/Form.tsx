@@ -1,10 +1,8 @@
 import { InputProps } from '../Input/Input';
 import styles from './Form.module.scss';
-import React, { FC, PropsWithChildren, ReactElement, useState } from 'react';
+import React, { FC, PropsWithChildren, ReactElement } from 'react';
 
 export const Form: FC<PropsWithChildren> = ({ children }) => {
-    const [invalidInputs, setInvalidInputs] = useState<string[]>([]);
-
     return (
         <form className={styles.container} noValidate>
             <div className={styles['input-container']}>
@@ -13,8 +11,6 @@ export const Form: FC<PropsWithChildren> = ({ children }) => {
                     (child) =>
                         React.cloneElement(child, {
                             ...child.props,
-                            isInvalid: invalidInputs.includes(child.props.id),
-                            onInputIsInvalid: setInvalidInputs,
                         }),
                 )}
             </div>
