@@ -2,12 +2,12 @@ import {
     FormDataContext,
     FormDataContextProps,
 } from '../../contexts/FormDataContext';
-import { InputType, SubscriptionStep } from '../../types/enums';
-import { Label } from '../Label/Label';
 import {
     FormStepsValidatorsContext,
     FormStepsValidatorsContextProps,
-} from '../SubscriptionForm/FormStepsValidatorsContext';
+} from '../../contexts/FormStepsValidatorsContext';
+import { InputType, SubscriptionStep } from '../../types/enums';
+import { Label } from '../Label/Label';
 import styles from './Input.module.scss';
 import { useFormValidators } from './useFormValidators';
 import { ChangeEventHandler, Context, FC, useContext, useState } from 'react';

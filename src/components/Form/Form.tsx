@@ -1,9 +1,9 @@
-import { SubscriptionStep } from '../../types/enums';
-import { InputProps } from '../Input/Input';
 import {
     FormStepsValidatorsContext,
     FormStepsValidatorsContextProps,
-} from '../SubscriptionForm/FormStepsValidatorsContext';
+} from '../../contexts/FormStepsValidatorsContext';
+import { SubscriptionStep } from '../../types/enums';
+import { InputProps } from '../Input/Input';
 import styles from './Form.module.scss';
 import React, {
     Context,
