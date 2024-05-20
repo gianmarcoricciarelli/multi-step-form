@@ -1,8 +1,8 @@
 import {
-    SubscriptionContext,
-    SubscriptionContextProps,
-} from '../../contexts/SubscriptionFormContext';
-import { PlansNames, BillingModes } from '../../types/enums';
+    FormDataContext,
+    FormDataContextProps,
+} from '../../contexts/FormDataContext';
+import { PlansNames, BillingModes, SubscriptionStep } from '../../types/enums';
 import { Label } from '../Label/Label';
 import styles from './Card.module.scss';
 import { usePlanSelection } from './usePlanSelection';
@@ -23,9 +23,11 @@ export const Card: FC<CardProps> = ({
     freeMonths,
     freeMonthsLabel,
 }) => {
-    const { plan, billingMode }: SubscriptionContextProps = useContext(
-        SubscriptionContext as Context<SubscriptionContextProps>,
-    );
+    const {
+        [SubscriptionStep.SubscriptionSelection]: {
+            data: { plan, billingMode },
+        },
+    } = useContext(FormDataContext as Context<FormDataContextProps>);
 
     const { planNameToIconMap, onCardClickHandler } = usePlanSelection();
 

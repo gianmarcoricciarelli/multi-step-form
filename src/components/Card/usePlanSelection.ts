@@ -2,10 +2,10 @@ import advancedIcon from '../../assets/images/icon-advanced.svg';
 import arcadeIcon from '../../assets/images/icon-arcade.svg';
 import proIcon from '../../assets/images/icon-pro.svg';
 import {
-    SubscriptionContext,
-    SubscriptionContextProps,
-} from '../../contexts/SubscriptionFormContext';
-import { PlansNames } from '../../types/enums';
+    FormDataContext,
+    FormDataContextProps,
+} from '../../contexts/FormDataContext';
+import { PlansNames, SubscriptionStep } from '../../types/enums';
 import { Context, useCallback, useContext, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -21,15 +21,15 @@ export function usePlanSelection(): {
 } {
     const { t } = useTranslation('subscriptionSteps');
 
-    const { setPlan } = useContext(
-        SubscriptionContext as Context<SubscriptionContextProps>,
-    );
+    const {
+        [SubscriptionStep.SubscriptionSelection]: { setData },
+    } = useContext(FormDataContext as Context<FormDataContextProps>);
 
     const onCardClickHandler = useCallback(
         (plan: PlansNames) => {
-            setPlan(plan);
+            setData((prevData) => ({ ...prevData, plan }));
         },
-        [setPlan],
+        [setData],
     );
 
     const planNameToIconMap: PlanNameToIconMap = useMemo<PlanNameToIconMap>(

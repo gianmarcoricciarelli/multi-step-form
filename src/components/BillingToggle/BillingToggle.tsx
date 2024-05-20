@@ -1,8 +1,8 @@
 import {
-    SubscriptionContext,
-    SubscriptionContextProps,
-} from '../../contexts/SubscriptionFormContext';
-import { BillingModes } from '../../types/enums';
+    FormDataContext,
+    FormDataContextProps,
+} from '../../contexts/FormDataContext';
+import { BillingModes, SubscriptionStep } from '../../types/enums';
 import { Label } from '../Label/Label';
 import styles from './BillingToggle.module.scss';
 import gsap from 'gsap';
@@ -12,10 +12,12 @@ import { useTranslation } from 'react-i18next';
 export const BillingToggle: FC = () => {
     const { t } = useTranslation('billingToggle');
 
-    const { billingMode, setBillingMode } =
-        useContext<SubscriptionContextProps>(
-            SubscriptionContext as Context<SubscriptionContextProps>,
-        );
+    const {
+        [SubscriptionStep.SubscriptionSelection]: {
+            data: { billingMode },
+            setData,
+        },
+    } = useContext(FormDataContext as Context<FormDataContextProps>);
 
     const circleToggleRef = useRef<HTMLDivElement>(null);
 
@@ -27,13 +29,21 @@ export const BillingToggle: FC = () => {
                 gsap.to(circleToggleRef.current, {
                     left: '64%',
                     duration: 0.3,
-                    onComplete: () => setBillingMode(BillingModes.Yearly),
+                    onComplete: () =>
+                        setData((prevData) => ({
+                            ...prevData,
+                            billingMode: BillingModes.Yearly,
+                        })),
                 });
             } else {
                 gsap.to(circleToggleRef.current, {
                     left: '8%',
                     duration: 0.3,
-                    onComplete: () => setBillingMode(BillingModes.Monthly),
+                    onComplete: () =>
+                        setData((prevData) => ({
+                            ...prevData,
+                            billingMode: BillingModes.Monthly,
+                        })),
                 });
             }
         }
