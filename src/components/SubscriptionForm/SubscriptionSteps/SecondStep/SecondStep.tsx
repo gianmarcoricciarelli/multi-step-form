@@ -1,11 +1,20 @@
 import {
+    FormDataContext,
+    FormDataContextProps,
+} from '../../../../contexts/FormDataContext';
+import {
+    FormStepsValidatorsContext,
+    FormStepsValidatorsContextProps,
+} from '../../../../contexts/FormStepsValidatorsContext';
+import {
     SubscriptionContext,
     SubscriptionContextProps,
 } from '../../../../contexts/SubscriptionFormContext';
+import { SubscriptionStep } from '../../../../types/enums';
 import { BillingToggle } from '../../../BillingToggle/BillingToggle';
 import { Card } from '../../../Card/Card';
 import styles from './SecondStep.module.scss';
-import { Context, FC, useContext } from 'react';
+import { Context, FC, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const SecondStep: FC = () => {
@@ -14,6 +23,29 @@ export const SecondStep: FC = () => {
     const { plans } = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
+    const {
+        [SubscriptionStep.SubscriptionSelection]: {
+            data: { plan, billingMode },
+        },
+    } = useContext(FormDataContext as Context<FormDataContextProps>);
+    const {
+        globalFormState: { userCanProceed, setUserCanProceed },
+    } = useContext(
+        FormStepsValidatorsContext as Context<FormStepsValidatorsContextProps>,
+    );
+
+    useEffect(() => {
+        if (plan && billingMode) {
+            if (!userCanProceed) {
+                setUserCanProceed(true);
+            }
+        }
+        if (!plan || !billingMode) {
+            if (userCanProceed) {
+                setUserCanProceed(false);
+            }
+        }
+    }, [billingMode, plan, setUserCanProceed, userCanProceed]);
 
     return (
         <>

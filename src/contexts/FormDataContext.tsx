@@ -22,8 +22,8 @@ type FirstStepData = {
     [valueof in InputType]: string;
 };
 type SecondStepData = {
-    plan: PlansNames | '';
-    billingMode: BillingModes | '';
+    plan: PlansNames;
+    billingMode: BillingModes;
 };
 
 export interface FormDataContextProps {
@@ -42,8 +42,8 @@ export const FormDataContextProvider: FC<PropsWithChildren> = ({
         tel: '',
     });
     const [secondStepData, setSecondStepData] = useState<SecondStepData>({
-        plan: '',
-        billingMode: '',
+        plan: PlansNames.Arcade,
+        billingMode: BillingModes.Yearly,
     });
 
     const formData: FormDataContextProps = useMemo(
