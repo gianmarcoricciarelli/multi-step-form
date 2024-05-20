@@ -1,4 +1,9 @@
-import { InputType, SubscriptionStep } from '../types/enums';
+import {
+    BillingModes,
+    InputType,
+    PlansNames,
+    SubscriptionStep,
+} from '../types/enums';
 import {
     Dispatch,
     FC,
@@ -9,14 +14,21 @@ import {
     useState,
 } from 'react';
 
+type StepData<T> = {
+    data: T;
+    setData: Dispatch<SetStateAction<T>>;
+};
 type FirstStepData = {
     [valueof in InputType]: string;
 };
+type SecondStepData = {
+    plan: PlansNames | '';
+    billingMode: BillingModes | '';
+};
+
 export interface FormDataContextProps {
-    [SubscriptionStep.UserDataForm]: {
-        data: FirstStepData;
-        setData: Dispatch<SetStateAction<FirstStepData>>;
-    };
+    [SubscriptionStep.UserDataForm]: StepData<FirstStepData>;
+    [SubscriptionStep.SubscriptionSelection]: StepData<SecondStepData>;
 }
 
 export const FormDataContext = createContext<FormDataContextProps | null>(null);
@@ -29,6 +41,10 @@ export const FormDataContextProvider: FC<PropsWithChildren> = ({
         email: '',
         tel: '',
     });
+    const [secondStepData, setSecondStepData] = useState<SecondStepData>({
+        plan: '',
+        billingMode: '',
+    });
 
     const formData: FormDataContextProps = useMemo(
         () => ({
@@ -36,8 +52,12 @@ export const FormDataContextProvider: FC<PropsWithChildren> = ({
                 data: firstStepData,
                 setData: setFirstStepData,
             },
+            [SubscriptionStep.SubscriptionSelection]: {
+                data: secondStepData,
+                setData: setSecondStepData,
+            },
         }),
-        [firstStepData],
+        [firstStepData, secondStepData],
     );
 
     return (
