@@ -5,7 +5,6 @@ import {
     SubscriptionStep,
 } from '../types/enums';
 import { AddOn } from '../types/types';
-import { t } from 'i18next';
 import {
     Dispatch,
     FC,
@@ -15,6 +14,7 @@ import {
     useMemo,
     useState,
 } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type StepData<T> = {
     data: T;
@@ -40,6 +40,8 @@ export const FormDataContext = createContext<FormDataContextProps | null>(null);
 export const FormDataContextProvider: FC<PropsWithChildren> = ({
     children,
 }) => {
+    const { t } = useTranslation('subscriptionSteps');
+
     const [firstStepData, setFirstStepData] = useState<FirstStepData>({
         text: '',
         email: '',
@@ -51,21 +53,12 @@ export const FormDataContextProvider: FC<PropsWithChildren> = ({
     });
     const [thirdStepData, setThirdStepData] = useState<ThirdStepData>([
         {
-            title: t('THIRD_STEP.ADD_ONS.ONLINE_SERVICE.TITLE', {
-                ns: 'subscriptionSteps',
-            }),
-            subtitle: t('THIRD_STEP.ADD_ONS.ONLINE_SERVICE.SUBTITLE', {
-                ns: 'subscriptionSteps',
-            }),
+            title: t('THIRD_STEP.ADD_ONS.ONLINE_SERVICE.TITLE'),
+            subtitle: t('THIRD_STEP.ADD_ONS.ONLINE_SERVICE.SUBTITLE'),
             monthlyAmount: t(
                 'THIRD_STEP.ADD_ONS.ONLINE_SERVICE.MONTHLY_AMOUNT',
-                {
-                    ns: 'subscriptionSteps',
-                },
             ),
-            yearlyAmount: t('THIRD_STEP.ADD_ONS.ONLINE_SERVICE.YEARLY_AMOUNT', {
-                ns: 'subscriptionSteps',
-            }),
+            yearlyAmount: t('THIRD_STEP.ADD_ONS.ONLINE_SERVICE.YEARLY_AMOUNT'),
         },
     ]);
 
