@@ -1,11 +1,29 @@
+import {
+    FormDataContext,
+    FormDataContextProps,
+} from '../../../../contexts/FormDataContext';
+import {
+    FormStepsValidatorsContext,
+    FormStepsValidatorsContextProps,
+} from '../../../../contexts/FormStepsValidatorsContext';
+import { SubscriptionStep } from '../../../../types/enums';
 import { AddOn } from '../../../../types/types';
 import { AddOnCard } from './AddOnCard/AddOnCard';
 import styles from './ThirdStep.module.scss';
-import { FC } from 'react';
+import { Context, FC, useContext, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const ThirdStep: FC = () => {
     const { t } = useTranslation('subscriptionSteps');
+
+    const {
+        [SubscriptionStep.AddOnsSelection]: { data: selectedAddOns },
+    } = useContext(FormDataContext as Context<FormDataContextProps>);
+    const {
+        globalFormState: { userCanProceed, setUserCanProceed },
+    } = useContext(
+        FormStepsValidatorsContext as Context<FormStepsValidatorsContextProps>,
+    );
 
     const addOns: AddOn[] = [
         {
@@ -35,6 +53,19 @@ export const ThirdStep: FC = () => {
             ),
         },
     ];
+
+    useEffect(() => {
+        if (selectedAddOns.length) {
+            if (!userCanProceed) {
+                setUserCanProceed(true);
+            }
+        } else {
+            if (userCanProceed) {
+                setUserCanProceed(false);
+            }
+        }
+    }, [selectedAddOns.length, setUserCanProceed, userCanProceed]);
+
     return (
         <div className={styles['third-step-container']}>
             {addOns.map((addOn) => (
