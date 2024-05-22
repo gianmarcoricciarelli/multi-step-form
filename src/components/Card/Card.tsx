@@ -2,6 +2,10 @@ import {
     FormDataContext,
     FormDataContextProps,
 } from '../../contexts/FormDataContext';
+import {
+    FormStaticDataContext,
+    FormStaticDataContextProps,
+} from '../../contexts/FormStaticDataContext';
 import { PlansNames, BillingModes, SubscriptionStep } from '../../types/enums';
 import { Label } from '../Label/Label';
 import styles from './Card.module.scss';
@@ -28,18 +32,21 @@ export const Card: FC<CardProps> = ({
             data: { plan, billingMode },
         },
     } = useContext(FormDataContext as Context<FormDataContextProps>);
+    const { plans } = useContext(
+        FormStaticDataContext as Context<FormStaticDataContextProps>,
+    );
 
-    const { planNameToIconMap, onCardClickHandler } = usePlanSelection();
+    const { onCardClickHandler } = usePlanSelection();
 
     return (
         <div
             className={`${styles.card}${plan === planName ? ` ${styles['card__selected']}` : ''}`}
             onClick={() => onCardClickHandler(planName, freeMonths)}
         >
-            <img src={planNameToIconMap[planName].icon} />
+            <img src={plans[planName].icon} />
             <div>
                 <Label color="marine-blue" fontStyle="semi-bold">
-                    {planNameToIconMap[planName].label}
+                    {plans[planName].label}
                 </Label>
                 <Label color="cool_gray" fontStyle="semi-bold">
                     {billingMode === BillingModes.Monthly

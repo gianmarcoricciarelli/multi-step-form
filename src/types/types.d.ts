@@ -22,6 +22,10 @@ export interface Plan {
     yearlyAmountLabel: string;
     freeMonths?: number;
 }
+export interface PlanIconAndLabel {
+    icon: string;
+    label: string;
+}
 
 // ADDONS
 export interface AddOn {
