@@ -3,8 +3,8 @@ import arcadeIcon from '../assets/images/icon-arcade.svg';
 import proIcon from '../assets/images/icon-pro.svg';
 import { PlansNames } from '../types/enums';
 import { AddOn, PlanIconAndLabel } from '../types/types';
-import i18next from 'i18next';
 import { FC, PropsWithChildren, createContext, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type PlanNameToIconMap = Record<PlansNames, PlanIconAndLabel>;
 export interface FormStaticDataContextProps {
@@ -18,7 +18,7 @@ export const FormStaticDataContext =
 export const FormStaticDataContextProvider: FC<PropsWithChildren> = ({
     children,
 }) => {
-    const t = i18next.getFixedT('en', 'subscriptionSteps');
+    const { t } = useTranslation('subscriptionSteps');
 
     const plans: PlanNameToIconMap = useMemo<PlanNameToIconMap>(
         () => ({
