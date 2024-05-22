@@ -1,14 +1,14 @@
 import {
-    SubscriptionContext,
-    SubscriptionContextProps,
-} from '../../../../../contexts/SubscriptionFormContext';
-import { AddOns, BillingModes } from '../../../../../types/enums';
+    FormDataContext,
+    FormDataContextProps,
+} from '../../../../../contexts/FormDataContext';
+import { BillingModes, SubscriptionStep } from '../../../../../types/enums';
 import { Label } from '../../../../Label/Label';
 import styles from './AddOnCard.module.scss';
 import { Context, FC, useContext } from 'react';
 
 interface AddOnCardProps {
-    title: AddOns;
+    title: string;
     subtitle: string;
     monthlyAmount: string;
     yearlyAmount: string;
@@ -20,9 +20,15 @@ export const AddOnCard: FC<AddOnCardProps> = ({
     monthlyAmount,
     yearlyAmount,
 }) => {
-    const { billingMode, addOns, setAddOns } = useContext(
-        SubscriptionContext as Context<SubscriptionContextProps>,
-    );
+    const {
+        [SubscriptionStep.SubscriptionSelection]: {
+            data: { billingMode },
+        },
+        [SubscriptionStep.AddOnsSelection]: {
+            data: addOns,
+            setData: setAddOns,
+        },
+    } = useContext(FormDataContext as Context<FormDataContextProps>);
 
     const onChangeHandler = () => {
         if (addOns.find((addOn) => addOn.title === title)) {

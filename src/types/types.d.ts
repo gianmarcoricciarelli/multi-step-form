@@ -22,6 +22,8 @@ export interface Plan {
     yearlyAmountLabel: string;
     freeMonths?: number;
 }
+
+// ADDONS
 export interface AddOn {
     title: string;
     subtitle: string;

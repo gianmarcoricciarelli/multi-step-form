@@ -1,15 +1,8 @@
-import { AddOns } from '../../../../types/enums';
+import { AddOn } from '../../../../types/types';
 import { AddOnCard } from './AddOnCard/AddOnCard';
 import styles from './ThirdStep.module.scss';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-
-interface AddOn {
-    title: AddOns;
-    subtitle: string;
-    monthlyAmount: string;
-    yearlyAmount: string;
-}
 
 export const ThirdStep: FC = () => {
     const { t } = useTranslation('subscriptionSteps');
