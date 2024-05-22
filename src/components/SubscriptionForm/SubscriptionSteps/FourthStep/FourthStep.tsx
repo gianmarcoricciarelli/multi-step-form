@@ -1,17 +1,27 @@
 import {
+    FormDataContext,
+    FormDataContextProps,
+} from '../../../../contexts/FormDataContext';
+import {
     SubscriptionContext,
     SubscriptionContextProps,
 } from '../../../../contexts/SubscriptionFormContext';
-import { BillingModes } from '../../../../types/enums';
+import { BillingModes, SubscriptionStep } from '../../../../types/enums';
 import { Label } from '../../../Label/Label';
 import styles from './FourthStep.module.scss';
 import { Context, FC, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export const FourthStep: FC = () => {
-    const { plan, billingMode, addOns, plans, setStep } = useContext(
+    const { plans, setStep } = useContext(
         SubscriptionContext as Context<SubscriptionContextProps>,
     );
+    const {
+        [SubscriptionStep.SubscriptionSelection]: {
+            data: { plan, billingMode },
+        },
+        [SubscriptionStep.AddOnsSelection]: { data: addOns },
+    } = useContext(FormDataContext as Context<FormDataContextProps>);
 
     const { t } = useTranslation('subscriptionSteps');
 
