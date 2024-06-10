@@ -1,7 +1,5 @@
 import { SubscriptionStep } from '../../types/enums';
-import i18next from 'i18next';
-
-const t = i18next.getFixedT('en', 'subscriptionSteps');
+import { t } from 'i18next';
 
 interface HeaderLabels {
     title: string;
@@ -10,20 +8,20 @@ interface HeaderLabels {
 
 export const headerLabelsToStepMap: Record<number, HeaderLabels | null> = {
     [SubscriptionStep.UserDataForm]: {
-        title: t('FIRST_STEP.TITLE'),
-        subtitle: t('FIRST_STEP.SUBTITLE'),
+        title: t('FIRST_STEP.TITLE', { ns: 'subscriptionSteps' }),
+        subtitle: t('FIRST_STEP.SUBTITLE', { ns: 'subscriptionSteps' }),
     },
     [SubscriptionStep.SubscriptionSelection]: {
-        title: t('SECOND_STEP.TITLE'),
-        subtitle: t('SECOND_STEP.SUBTITLE'),
+        title: t('SECOND_STEP.TITLE', { ns: 'subscriptionSteps' }),
+        subtitle: t('SECOND_STEP.SUBTITLE', { ns: 'subscriptionSteps' }),
     },
     [SubscriptionStep.AddOnsSelection]: {
-        title: t('THIRD_STEP.TITLE'),
-        subtitle: t('THIRD_STEP.SUBTITLE'),
+        title: t('THIRD_STEP.TITLE', { ns: 'subscriptionSteps' }),
+        subtitle: t('THIRD_STEP.SUBTITLE', { ns: 'subscriptionSteps' }),
     },
     [SubscriptionStep.Summary]: {
-        title: t('FOURTH_STEP.TITLE'),
-        subtitle: t('FOURTH_STEP.SUBTITLE'),
+        title: t('FOURTH_STEP.TITLE', { ns: 'subscriptionSteps' }),
+        subtitle: t('FOURTH_STEP.SUBTITLE', { ns: 'subscriptionSteps' }),
     },
     [SubscriptionStep.Final]: null,
 };
